@@ -1,6 +1,6 @@
-C:\Users\Ivang\.CLion2018.3\system\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /cygdrive/c/Users/Ivang/CLionProjects/matam_3
-CMake Error: CMake was unable to find a build program corresponding to "Unix Makefiles".  CMAKE_MAKE_PROGRAM is not set.  You probably need to select a different build tool.
-CMake Error: CMAKE_C_COMPILER not set, after EnableLanguage
-CMake Error: CMAKE_CXX_COMPILER not set, after EnableLanguage
+"D:\SoftWare\CLion 2018.2.5\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Technion\Semester_3\234124-matam\ex3\Matam_3
+CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
+  CMake 3.13 or higher is required.  You are running version 3.12.3
+
+
 -- Configuring incomplete, errors occurred!
-See also "/cygdrive/c/Users/Ivang/CLionProjects/matam_3/cmake-build-debug/CMakeFiles/CMakeOutput.log".

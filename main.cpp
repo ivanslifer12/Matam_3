@@ -1,6 +1,8 @@
 #include <iostream>
 
+#include "Complex.h"
+using namespace MtmMath;
+
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+
 }
