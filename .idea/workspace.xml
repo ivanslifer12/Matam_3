@@ -11,14 +11,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="430d0a05-427c-45a1-a208-45da6ecd70c5" name="Default Changelist" comment="yoyo">
+    <list default="true" id="430d0a05-427c-45a1-a208-45da6ecd70c5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wet_files/Complex.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wet_files/Complex.h" beforeDir="false" afterPath="$PROJECT_DIR$/wet_files/Complex.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wet_files/MtmVec.h" beforeDir="false" afterPath="$PROJECT_DIR$/wet_files/MtmVec.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wet_files/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/wet_files/test.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -36,31 +33,32 @@
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.15" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.18" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="cpp" value="3" />
-          <entry key="h" value="4" />
+          <entry key="h" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="ObjectiveC" value="7" />
+          <entry key="ObjectiveC" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="1328" />
-          <entry key="h" value="258" />
-          <entry key="txt" value="78" />
+          <entry key="cpp" value="1549" />
+          <entry key="h" value="2256" />
+          <entry key="txt" value="90" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CMakeLists.txt" value="71" />
-          <entry key="ObjectiveC" value="1586" />
+          <entry key="CMakeLists.txt" value="83" />
+          <entry key="ObjectiveC" value="3805" />
           <entry key="PLAIN_TEXT" value="7" />
         </counts>
       </usages-collector>
@@ -71,17 +69,69 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+            <state relative-caret-position="102">
+              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wet_files/Complex.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1088">
+              <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/wet_files/Complex.h">
+        <entry file="file://$PROJECT_DIR$/wet_files/MtmVec.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="969">
-              <caret line="57" column="21" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
+            <state relative-caret-position="226">
+              <caret line="96" column="9" lean-forward="true" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
+              <folding>
+                <element signature="e#43#60#0" expanded="true" />
+                <element signature="e#187#199#0" expanded="true" />
+                <element signature="e#789#804#0" expanded="true" />
+                <element signature="e#1389#1401#0" expanded="true" />
+                <element signature="e#1490#1502#0" expanded="true" />
+                <element signature="e#1592#1604#0" expanded="true" />
+                <element signature="e#1678#1690#0" expanded="true" />
+                <element signature="e#1768#1780#0" expanded="true" />
+                <element signature="e#1858#1870#0" expanded="true" />
+                <element signature="e#1948#1960#0" expanded="true" />
+                <element signature="e#2038#2050#0" expanded="true" />
+                <element signature="e#2132#2144#0" expanded="true" />
+                <element signature="e#2241#2253#0" expanded="true" />
+                <element signature="e#2427#2439#0" expanded="true" />
+                <element signature="e#2650#2662#0" expanded="true" />
+                <element signature="e#2877#2889#0" expanded="true" />
+                <element signature="e#3128#3140#0" expanded="true" />
+                <element signature="e#3154#3169#0" expanded="true" />
+                <element signature="e#3424#3436#0" expanded="true" />
+                <element signature="e#3813#3825#0" expanded="true" />
+                <element signature="e#4231#4243#0" expanded="true" />
+                <element signature="e#4501#4513#0" expanded="true" />
+                <element signature="e#4628#4640#0" expanded="true" />
+                <element signature="e#4758#4770#0" expanded="true" />
+                <element signature="e#4836#4848#0" expanded="true" />
+                <element signature="e#5160#5172#0" expanded="true" />
+                <element signature="e#5323#5335#0" expanded="true" />
+                <element signature="e#5525#5537#0" expanded="true" />
+                <element signature="e#5288#5300#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wet_files/Auxilaries.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-221">
+              <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+              <folding>
+                <element signature="e#50#67#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,8 +151,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wet_files/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1581">
-              <caret line="6" column="17" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="17" />
+            <state relative-caret-position="1411">
+              <caret line="89" column="11" selection-start-line="89" selection-start-column="4" selection-end-line="89" selection-end-column="11" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -110,8 +163,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wet_files/test.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+            <state relative-caret-position="221">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="e#45#64#0" expanded="true" />
               </folding>
@@ -125,6 +178,8 @@
     <findStrings>
       <find>maxabso</find>
       <find>complex</find>
+      <find>FUNC</find>
+      <find>MAXABSO</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -135,9 +190,10 @@
       <list>
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/wet_files/Complex.cpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/wet_files/Complex.h" />
         <option value="$PROJECT_DIR$/wet_files/test.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/wet_files/MtmVec.h" />
       </list>
     </option>
   </component>
@@ -224,6 +280,7 @@
       <workItem from="1547498059908" duration="815000" />
       <workItem from="1547901941842" duration="164000" />
       <workItem from="1547902147998" duration="27640000" />
+      <workItem from="1548067869562" duration="37403000" />
     </task>
     <task id="LOCAL-00001" summary="yo">
       <created>1547918953926</created>
@@ -239,11 +296,25 @@
       <option name="project" value="LOCAL" />
       <updated>1547919120930</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="yoyo">
+      <created>1548067980661</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1548067980661</updated>
+    </task>
+    <task id="LOCAL-00004" summary="yoyo">
+      <created>1548241487544</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1548241487544</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29712000" />
+    <option name="totallyTimeSpent" value="67115000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -256,14 +327,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18657719" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18926175" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" sideWeight="0.49932885" visible="true" weight="0.32907802" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32907802" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32907802" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -274,6 +345,7 @@
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32907802" />
       <window_info anchor="bottom" id="CMake" order="11" sideWeight="0.49932885" weight="0.31205675" />
       <window_info anchor="bottom" id="Tail" order="12" />
+      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49932885" weight="0.32907802" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -292,22 +364,6 @@
     <MESSAGE value="yoyo" />
     <option name="LAST_COMMIT_MESSAGE" value="yoyo" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/wet_files/test.cpp</url>
-          <line>15</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/wet_files/test.cpp</url>
-          <line>13</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
@@ -316,11 +372,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wet_files/MtmVec.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-350" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/wet_files/Complex.cpp" />
     <entry file="file://$PROJECT_DIR$/wet_files/MtmMat.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -331,41 +383,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wet_files/Complex.cpp">
+    <entry file="file://$PROJECT_DIR$/wet_files/Auxilaries.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+        <state relative-caret-position="-221">
+          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+          <folding>
+            <element signature="e#50#67#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wet_files/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1581">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="17" />
+        <state relative-caret-position="1411">
+          <caret line="89" column="11" selection-start-line="89" selection-start-column="4" selection-end-line="89" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wet_files/Complex.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1088">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wet_files/test.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+        <state relative-caret-position="221">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="e#45#64#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wet_files/Complex.h">
+    <entry file="file://$PROJECT_DIR$/wet_files/MtmVec.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="57" column="21" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
+        <state relative-caret-position="226">
+          <caret line="96" column="9" lean-forward="true" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
+          <folding>
+            <element signature="e#43#60#0" expanded="true" />
+            <element signature="e#187#199#0" expanded="true" />
+            <element signature="e#789#804#0" expanded="true" />
+            <element signature="e#1389#1401#0" expanded="true" />
+            <element signature="e#1490#1502#0" expanded="true" />
+            <element signature="e#1592#1604#0" expanded="true" />
+            <element signature="e#1678#1690#0" expanded="true" />
+            <element signature="e#1768#1780#0" expanded="true" />
+            <element signature="e#1858#1870#0" expanded="true" />
+            <element signature="e#1948#1960#0" expanded="true" />
+            <element signature="e#2038#2050#0" expanded="true" />
+            <element signature="e#2132#2144#0" expanded="true" />
+            <element signature="e#2241#2253#0" expanded="true" />
+            <element signature="e#2427#2439#0" expanded="true" />
+            <element signature="e#2650#2662#0" expanded="true" />
+            <element signature="e#2877#2889#0" expanded="true" />
+            <element signature="e#3128#3140#0" expanded="true" />
+            <element signature="e#3154#3169#0" expanded="true" />
+            <element signature="e#3424#3436#0" expanded="true" />
+            <element signature="e#3813#3825#0" expanded="true" />
+            <element signature="e#4231#4243#0" expanded="true" />
+            <element signature="e#4501#4513#0" expanded="true" />
+            <element signature="e#4628#4640#0" expanded="true" />
+            <element signature="e#4758#4770#0" expanded="true" />
+            <element signature="e#4836#4848#0" expanded="true" />
+            <element signature="e#5160#5172#0" expanded="true" />
+            <element signature="e#5323#5335#0" expanded="true" />
+            <element signature="e#5525#5537#0" expanded="true" />
+            <element signature="e#5288#5300#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

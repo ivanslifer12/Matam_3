@@ -12,7 +12,7 @@ namespace MtmMath {
     template <typename T>
     class MtmVec {
         Dimensions dime;
-        vector<T> value;
+        std::vector<T> value;
     public:
         /*
          * Vector constructor, m is the number of elements in it and val is the initial value for the matrix elements
@@ -48,38 +48,58 @@ namespace MtmMath {
          * Performs transpose operation on matrix
          */
         void transpose();
+
+        Dimensions getDimension() const ;
+        size_t getLength() const;
     };
-
+    template <typename T>
     MtmVec<T> operator+(const MtmVec<T>& vec1, const MtmVec<T>& vec2);
+    template <typename T>
     MtmVec<T> operator-(const MtmVec<T>& vec1, const MtmVec<T>& vec2);
-    MtmVec<T> operator*(const MtmVec<T>& vec1, const MtmVec<T>& vec2);
+
+    template <typename T>
+    MtmVec<T> operator+(const MtmVec<T>& vec, const T& scalar);
+    template <typename T>
+    MtmVec<T> operator+(const T& scalar, const MtmVec<T>& vec);
+    template <typename T>
+    MtmVec<T> operator-(const MtmVec<T>& vec, const T& scalar);
+    template <typename T>
+    MtmVec<T> operator-(const T& scalar, const MtmVec<T>& vec);
+    template <typename T>
+    MtmVec<T> operator*(const MtmVec<T>& vec, const T& scalar);
+    template <typename T>
+    MtmVec<T> operator*(const T& scalar, const MtmVec<T>& vec);
 
 
 
 
-    MtmVec::MtmVec(size_t m, const T& val=T()) : dime(m, 1), value(m, val) {}
-    MtmVec::MtmVec() : dime(0, 1), value() {}
+    template <typename T>
+    MtmVec<T>::MtmVec(size_t m, const T& val) : dime(m, 1), value(m, val) {}
+    template <typename T>
+    MtmVec<T>::MtmVec() : dime(0, 1), value() {}
     /*MtmVec::MtmVec(const MtmVec<T>& vector) {
         dime = vector.dime;
         value = vector.value;
     }*/
 
-
-    T& operator[](int index) {
-        if (index < 0 || index >= value.size()) {
-            throw MtmExceptions::AccessIllegalElement;
+    template <typename T>
+    T& MtmVec<T>::operator[](int index) {
+        if (index < 0 || (size_t)index >= value.size()) {
+            throw MtmExceptions::AccessIllegalElement();
         }
-        return value[x];
+        return value[index];
     }
 
-    const T& operator[](int index) const {
-        if (index < 0 || index >= value.size()) {
-            throw MtmExceptions::AccessIllegalElement;
+    template <typename T>
+    const T& MtmVec<T>::operator[](int index) const {
+        if (index < 0 || (size_t)index >= value.size()) {
+            throw MtmExceptions::AccessIllegalElement();
         }
-        return value[x];
+        return value[index];
     }
 
-    MtmVec<T> MtmVec::operator-() const {
+    template <typename T>
+    MtmVec<T> MtmVec<T>::operator-() const {
         MtmVec<T> negative = MtmVec(*this);
         for (size_t i = 0; i < value.size; i++){
             negative[i] = -(*this)[i];
@@ -91,7 +111,9 @@ namespace MtmMath {
 
 
 
-    T MtmVec::vecFunc(Func& f) const{
+    template <typename T>
+    template <typename Func>
+    T MtmVec<T>::vecFunc(Func& f) const{
         size_t length = value.size();
         T ret_value;
         for (size_t i = 0; i < length; i++) {
@@ -101,42 +123,101 @@ namespace MtmMath {
     }
 
 
+    //vector and vector
 
-
+    template <typename T>
     MtmVec<T> operator+(const MtmVec<T>& vec1, const MtmVec<T>& vec2) {
-        if (vec1.dime != vec2.dime){
-            throw MtmExceptions::DimensionMismatch;
+        if (vec1.getDimension() != vec2.getDimension()){
+            throw MtmExceptions::DimensionMismatch();
         }
-        MtmVec<T> result = MtmVec(vec1.value.size(), 0);
+        MtmVec<T> result = MtmVec<T>(vec1.value.size(), 0);
         for (int i =0; i < vec1.value.size(); i++){
             result[i] = vec1[i] + vec2[i];
         }
         return result;
     }
 
+    template <typename T>
     MtmVec<T> operator-(const MtmVec<T>& vec1, const MtmVec<T>& vec2){
-        if (vec1.dime != vec2.dime){
-            throw MtmExceptions::DimensionMismatch;
+        if (vec1.getDimension() != vec2.getDimension()){
+            throw MtmExceptions::DimensionMismatch();
         }
-        MtmVec<T> result = MtmVec(vec1.value.size(), 0);
-        for (int i =0; i < vec1.value.size(); i++){
+        MtmVec<T> result = MtmVec<T>(vec1.getLength(), 0);
+        for (size_t i =0; i < vec1.getLength(); i++){
             result[i] = vec1[i] - vec2[i];
         }
         return result;
     }
 
-    //for vector multi
-    MtmVec<T> operator*(const MtmVec<T>& vec1, const MtmVec<T>& vec2) {
+    //vector and scalar
+    template <typename T>
+    MtmVec<T> operator+(const MtmVec<T>& vec, const T& scalar) {
+        MtmVec<T> result = MtmVec<T>(vec.value.size(), 0);
+        for (int i = 0; i < vec.value.size(); i++){
+            vec[i] += scalar;
+        }
+        return result;
+    }
+
+    template <typename T>
+    MtmVec<T> operator+(const T& scalar, const MtmVec<T>& vec) {
+        return vec + scalar;
+    }
+
+    template <typename T>
+    MtmVec<T> operator-(const MtmVec<T>& vec, const T& scalar) {
+        return vec + (-scalar);
+    }
+
+    template <typename T>
+    MtmVec<T> operator-(const T& scalar, const MtmVec<T>& vec) {
+        return (-vec) + scalar;
+    }
+
+    template <typename T>
+    MtmVec<T> operator*(const MtmVec<T>& vec, const T& scalar) {
+        MtmVec<T> result = MtmVec<T>(vec);
+        for (size_t i = 0; i < vec.getLength(); i++){
+            result[i] *= scalar;
+        }
+        return result;
+    }
+
+    template <typename T>
+    MtmVec<T> operator*(const T& scalar, const MtmVec<T>& vec) {
+        return vec * scalar;
+    }
+
+    template <typename T>
+    Dimensions MtmVec<T>::getDimension() const {
+        return Dimensions(this->dime);
+    }
+
+    template <typename T>
+    size_t MtmVec<T>::getLength() const {
+        return this->value.size();
+    }
+
+    template <typename T>
+    void MtmVec<T>::transpose() {
+        dime.transpose();
+    }
+
+
+    /*MtmMat<T> operator*(const MtmVec<T>& vec1, const MtmVec<T>& vec2) {
         if (vec1.dime.getRow() == vec2.dime.getCol() &&
                             vec1.dime.getCol() == vec2.dime.getRow() ){
-            T result = 0;
+            MtmMat<T> result = 0;
             for (int i =0; i < vec1.value.size(); i++){
                 result += vec1[i] * vec2[i];
             }
             return result;
         }
         throw MtmExceptions::DimensionMismatch;
-    }
+    } */
+
+    //vector and scalar
+
 
 }
 
