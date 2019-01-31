@@ -13,6 +13,8 @@ namespace MtmMath {
 
     template <typename T>
     class MtmMat {
+        Dimensions dime;
+
     public:
         /*
          * Matrix constructor, dim_t is the dimension of the matrix and val is the initial value for the matrix elements
@@ -24,8 +26,24 @@ namespace MtmMath {
          * It outputs a vector in the size of the matrix columns where each element is the final output
          * by the function object's * operator
          */
+        MtmMat  mtmCopy(const MtmMat& m);
+        MtmMat operator=(const MtmMat& m);
+        ~MtmMat();
+
+
+
+
+
+
+
+
+
         template <typename Func>
         MtmVec<T> matFunc(Func& f) const;
+
+
+
+
 
         /*
          * resizes a matrix to dimension dim, new elements gets the value val.

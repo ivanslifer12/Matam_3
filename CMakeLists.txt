@@ -5,6 +5,7 @@ project(matam_3/wet_files)
 set(SOURCE_FILES wet_files/Complex.h
         wet_files/MtmVec.h
         wet_files/test.cpp
+        wet_files/MtmMat.h
         )
 
 
