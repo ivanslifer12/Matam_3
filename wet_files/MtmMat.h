@@ -25,12 +25,12 @@ namespace MtmMath {
 
         MtmMat(const std::size_t row_dim, const std::size_t column_dim);
 
+
         /*
          * Matrix constructor, dim_t is the dimension of the matrix and val is the initial value for the matrix elements
          */
 
         MtmMat(Dimensions dim_t, const T& val=T());
-
 
 
         /*
@@ -73,6 +73,10 @@ namespace MtmMath {
         virtual void transpose();
 
     };
+
+
+
+
 }
 
 
