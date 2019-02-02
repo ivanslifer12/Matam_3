@@ -15,11 +15,23 @@ namespace MtmMath {
     class MtmMat {
         Dimensions dime;
 
+
+    protected:
+        T** matrix; // data
+        std::size_t row_dim;
+        std::size_t column_dim; //dimenstions of  of matrix
+
     public:
+
+        MtmMat(const std::size_t row_dim, const std::size_t column_dim);
+
         /*
          * Matrix constructor, dim_t is the dimension of the matrix and val is the initial value for the matrix elements
          */
+
         MtmMat(Dimensions dim_t, const T& val=T());
+
+
 
         /*
          * Function that get function object f and uses it's () operator on each element in the matrix columns.

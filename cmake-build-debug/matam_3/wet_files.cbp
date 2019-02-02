@@ -83,7 +83,22 @@
 		<Unit filename="/cygdrive/c/Users/Ivang/CLionProjects/matam_3/Matam_3/wet_files/Complex.h">
 			<Option target="matam_3"/>
 		</Unit>
+		<Unit filename="/cygdrive/c/Users/Ivang/CLionProjects/matam_3/Matam_3/wet_files/MtmExceptions.h">
+			<Option target="matam_3"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Ivang/CLionProjects/matam_3/Matam_3/wet_files/MtmMat.cpp">
+			<Option target="matam_3"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/Ivang/CLionProjects/matam_3/Matam_3/wet_files/MtmMat.h">
+			<Option target="matam_3"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Ivang/CLionProjects/matam_3/Matam_3/wet_files/MtmMatSq.h">
+			<Option target="matam_3"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Ivang/CLionProjects/matam_3/Matam_3/wet_files/MtmMatTriag.h">
+			<Option target="matam_3"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Ivang/CLionProjects/matam_3/Matam_3/wet_files/MtmVec.cpp">
 			<Option target="matam_3"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/Ivang/CLionProjects/matam_3/Matam_3/wet_files/MtmVec.h">

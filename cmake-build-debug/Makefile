@@ -123,6 +123,60 @@ matam_3/fast:
 	$(MAKE) -f CMakeFiles/matam_3.dir/build.make CMakeFiles/matam_3.dir/build
 .PHONY : matam_3/fast
 
+wet_files/MtmMat.o: wet_files/MtmMat.cpp.o
+
+.PHONY : wet_files/MtmMat.o
+
+# target to build an object file
+wet_files/MtmMat.cpp.o:
+	$(MAKE) -f CMakeFiles/matam_3.dir/build.make CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.o
+.PHONY : wet_files/MtmMat.cpp.o
+
+wet_files/MtmMat.i: wet_files/MtmMat.cpp.i
+
+.PHONY : wet_files/MtmMat.i
+
+# target to preprocess a source file
+wet_files/MtmMat.cpp.i:
+	$(MAKE) -f CMakeFiles/matam_3.dir/build.make CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.i
+.PHONY : wet_files/MtmMat.cpp.i
+
+wet_files/MtmMat.s: wet_files/MtmMat.cpp.s
+
+.PHONY : wet_files/MtmMat.s
+
+# target to generate assembly for a file
+wet_files/MtmMat.cpp.s:
+	$(MAKE) -f CMakeFiles/matam_3.dir/build.make CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.s
+.PHONY : wet_files/MtmMat.cpp.s
+
+wet_files/MtmVec.o: wet_files/MtmVec.cpp.o
+
+.PHONY : wet_files/MtmVec.o
+
+# target to build an object file
+wet_files/MtmVec.cpp.o:
+	$(MAKE) -f CMakeFiles/matam_3.dir/build.make CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.o
+.PHONY : wet_files/MtmVec.cpp.o
+
+wet_files/MtmVec.i: wet_files/MtmVec.cpp.i
+
+.PHONY : wet_files/MtmVec.i
+
+# target to preprocess a source file
+wet_files/MtmVec.cpp.i:
+	$(MAKE) -f CMakeFiles/matam_3.dir/build.make CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.i
+.PHONY : wet_files/MtmVec.cpp.i
+
+wet_files/MtmVec.s: wet_files/MtmVec.cpp.s
+
+.PHONY : wet_files/MtmVec.s
+
+# target to generate assembly for a file
+wet_files/MtmVec.cpp.s:
+	$(MAKE) -f CMakeFiles/matam_3.dir/build.make CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.s
+.PHONY : wet_files/MtmVec.cpp.s
+
 wet_files/test.o: wet_files/test.cpp.o
 
 .PHONY : wet_files/test.o
@@ -159,6 +213,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... matam_3"
 	@echo "... edit_cache"
+	@echo "... wet_files/MtmMat.o"
+	@echo "... wet_files/MtmMat.i"
+	@echo "... wet_files/MtmMat.s"
+	@echo "... wet_files/MtmVec.o"
+	@echo "... wet_files/MtmVec.i"
+	@echo "... wet_files/MtmVec.s"
 	@echo "... wet_files/test.o"
 	@echo "... wet_files/test.i"
 	@echo "... wet_files/test.s"
