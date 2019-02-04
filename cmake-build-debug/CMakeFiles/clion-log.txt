@@ -1,4 +1,4 @@
-C:\Users\Ivang\.CLion2018.3\system\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /cygdrive/c/Users/Ivang/CLionProjects/matam_3/Matam_3
+"D:\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug –Wall –Werror –pedantic-errors –DNDEBUG -G "CodeBlocks - MinGW Makefiles" C:\Users\Eli-PC\Desktop\ivan\matam3
 -- Configuring done
 -- Generating done
--- Build files have been written to: /cygdrive/c/Users/Ivang/CLionProjects/matam_3/Matam_3/cmake-build-debug
+-- Build files have been written to: C:/Users/Eli-PC/Desktop/ivan/matam3/cmake-build-debug

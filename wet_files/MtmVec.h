@@ -9,8 +9,6 @@
 using namespace std;
 
 namespace MtmMath {
-
-
     template<typename T>
     class MtmVec {
         Dimensions dime;
@@ -77,7 +75,7 @@ namespace MtmMath {
 
             nonzero_iterator &operator++() {
                 do {
-                    ++ (this->index);
+                    ++(this->index);
                 } while ((unsigned int) this->index < this->vec->data.size() &&
                          this->vec->data[this->index] == 0);
                 if ((unsigned int) this->index >= this->vec->data.size()) {

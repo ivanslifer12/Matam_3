@@ -1,7 +1,6 @@
 #ifndef EX3_MTMMAT_H
 #define EX3_MTMMAT_H
 
-
 #include <vector>
 #include "MtmExceptions.h"
 #include "Auxilaries.h"
