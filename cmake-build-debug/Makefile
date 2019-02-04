@@ -176,59 +176,32 @@ wet_files/MtmMat.cpp.s:
 	$(MAKE) -f CMakeFiles\matam_3.dir\build.make CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.s
 .PHONY : wet_files/MtmMat.cpp.s
 
-wet_files/MtmVec.obj: wet_files/MtmVec.cpp.obj
+wet_files/main.obj: wet_files/main.cpp.obj
 
-.PHONY : wet_files/MtmVec.obj
-
-# target to build an object file
-wet_files/MtmVec.cpp.obj:
-	$(MAKE) -f CMakeFiles\matam_3.dir\build.make CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.obj
-.PHONY : wet_files/MtmVec.cpp.obj
-
-wet_files/MtmVec.i: wet_files/MtmVec.cpp.i
-
-.PHONY : wet_files/MtmVec.i
-
-# target to preprocess a source file
-wet_files/MtmVec.cpp.i:
-	$(MAKE) -f CMakeFiles\matam_3.dir\build.make CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.i
-.PHONY : wet_files/MtmVec.cpp.i
-
-wet_files/MtmVec.s: wet_files/MtmVec.cpp.s
-
-.PHONY : wet_files/MtmVec.s
-
-# target to generate assembly for a file
-wet_files/MtmVec.cpp.s:
-	$(MAKE) -f CMakeFiles\matam_3.dir\build.make CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.s
-.PHONY : wet_files/MtmVec.cpp.s
-
-wet_files/somemain.obj: wet_files/somemain.cpp.obj
-
-.PHONY : wet_files/somemain.obj
+.PHONY : wet_files/main.obj
 
 # target to build an object file
-wet_files/somemain.cpp.obj:
-	$(MAKE) -f CMakeFiles\matam_3.dir\build.make CMakeFiles/matam_3.dir/wet_files/somemain.cpp.obj
-.PHONY : wet_files/somemain.cpp.obj
+wet_files/main.cpp.obj:
+	$(MAKE) -f CMakeFiles\matam_3.dir\build.make CMakeFiles/matam_3.dir/wet_files/main.cpp.obj
+.PHONY : wet_files/main.cpp.obj
 
-wet_files/somemain.i: wet_files/somemain.cpp.i
+wet_files/main.i: wet_files/main.cpp.i
 
-.PHONY : wet_files/somemain.i
+.PHONY : wet_files/main.i
 
 # target to preprocess a source file
-wet_files/somemain.cpp.i:
-	$(MAKE) -f CMakeFiles\matam_3.dir\build.make CMakeFiles/matam_3.dir/wet_files/somemain.cpp.i
-.PHONY : wet_files/somemain.cpp.i
+wet_files/main.cpp.i:
+	$(MAKE) -f CMakeFiles\matam_3.dir\build.make CMakeFiles/matam_3.dir/wet_files/main.cpp.i
+.PHONY : wet_files/main.cpp.i
 
-wet_files/somemain.s: wet_files/somemain.cpp.s
+wet_files/main.s: wet_files/main.cpp.s
 
-.PHONY : wet_files/somemain.s
+.PHONY : wet_files/main.s
 
 # target to generate assembly for a file
-wet_files/somemain.cpp.s:
-	$(MAKE) -f CMakeFiles\matam_3.dir\build.make CMakeFiles/matam_3.dir/wet_files/somemain.cpp.s
-.PHONY : wet_files/somemain.cpp.s
+wet_files/main.cpp.s:
+	$(MAKE) -f CMakeFiles\matam_3.dir\build.make CMakeFiles/matam_3.dir/wet_files/main.cpp.s
+.PHONY : wet_files/main.cpp.s
 
 # Help Target
 help:
@@ -245,12 +218,9 @@ help:
 	@echo ... wet_files/MtmMat.obj
 	@echo ... wet_files/MtmMat.i
 	@echo ... wet_files/MtmMat.s
-	@echo ... wet_files/MtmVec.obj
-	@echo ... wet_files/MtmVec.i
-	@echo ... wet_files/MtmVec.s
-	@echo ... wet_files/somemain.obj
-	@echo ... wet_files/somemain.i
-	@echo ... wet_files/somemain.s
+	@echo ... wet_files/main.obj
+	@echo ... wet_files/main.i
+	@echo ... wet_files/main.s
 .PHONY : help
 
 

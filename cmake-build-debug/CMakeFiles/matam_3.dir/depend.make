@@ -11,13 +11,9 @@ CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.obj: ../wet_files/MtmMat.cpp
 CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.obj: ../wet_files/MtmMat.h
 CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.obj: ../wet_files/MtmVec.h
 
-CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.obj: ../wet_files/Auxilaries.h
-CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.obj: ../wet_files/Complex.h
-CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.obj: ../wet_files/MtmExceptions.h
-CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.obj: ../wet_files/MtmMat.h
-CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.obj: ../wet_files/MtmVec.cpp
-CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.obj: ../wet_files/MtmVec.h
-
-CMakeFiles/matam_3.dir/wet_files/somemain.cpp.obj: ../wet_files/Complex.h
-CMakeFiles/matam_3.dir/wet_files/somemain.cpp.obj: ../wet_files/somemain.cpp
+CMakeFiles/matam_3.dir/wet_files/main.cpp.obj: ../wet_files/Auxilaries.h
+CMakeFiles/matam_3.dir/wet_files/main.cpp.obj: ../wet_files/Complex.h
+CMakeFiles/matam_3.dir/wet_files/main.cpp.obj: ../wet_files/MtmExceptions.h
+CMakeFiles/matam_3.dir/wet_files/main.cpp.obj: ../wet_files/MtmVec.h
+CMakeFiles/matam_3.dir/wet_files/main.cpp.obj: ../wet_files/main.cpp
 

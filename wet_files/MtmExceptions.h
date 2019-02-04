@@ -18,7 +18,10 @@ namespace MtmMath {
          * "MtmError: Illegal initialization values" in what() class function
          */
         class IllegalInitialization : public MtmExceptions {
-
+        public:
+            virtual const char *what() const throw() {
+                return "MtmError: Illegal initialization values";
+            }
         };
 
         /*
@@ -26,7 +29,10 @@ namespace MtmMath {
          * "MtmError: Out of memory" in what() class function
          */
         class OutOfMemory : public MtmExceptions {
-
+        public:
+            virtual const char *what() const throw() {
+                return "MtmError: Out of memory";
+            }
         };
 
         /*
@@ -35,7 +41,10 @@ namespace MtmMath {
          * in what() class function
          */
         class DimensionMismatch : public MtmExceptions {
-
+        public:
+            virtual const char *what() const throw() {
+                return "MtmError: Dimension mismatch: (<mat 1 row>,<mat 1 col>) (<mat 2 row>,<mat 2 col>)";
+            }
         };
 
         /*
@@ -44,7 +53,11 @@ namespace MtmMath {
          * in what() class function
          */
         class ChangeMatFail : public MtmExceptions {
-
+        public:
+            virtual const char *what() const throw() {
+                return "MtmError: Change matrix shape failed from: (<mat row>,<mat col>)"
+                       "(<new mat row>,<new mat col>)";
+            }
         };
 
         /*
@@ -52,7 +65,10 @@ namespace MtmMath {
          * "MtmError: Attempt access to illegal element" in what() class function
          */
         class AccessIllegalElement : public MtmExceptions {
-
+        public:
+            virtual const char *what() const throw() {
+                return "MtmError: Attempt access to illegal element";
+            }
         };
     }
 }

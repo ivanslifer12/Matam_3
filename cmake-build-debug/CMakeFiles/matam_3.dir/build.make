@@ -69,22 +69,9 @@ CMakeFiles/matam_3.dir/wet_files/Complex.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/matam_3.dir/wet_files/Complex.cpp.s"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Eli-PC\Desktop\ivan\matam3\wet_files\Complex.cpp -o CMakeFiles\matam_3.dir\wet_files\Complex.cpp.s
 
-CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.obj: CMakeFiles/matam_3.dir/flags.make
-CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.obj: ../wet_files/MtmVec.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Eli-PC\Desktop\ivan\matam3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\matam_3.dir\wet_files\MtmVec.cpp.obj -c C:\Users\Eli-PC\Desktop\ivan\matam3\wet_files\MtmVec.cpp
-
-CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Eli-PC\Desktop\ivan\matam3\wet_files\MtmVec.cpp > CMakeFiles\matam_3.dir\wet_files\MtmVec.cpp.i
-
-CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Eli-PC\Desktop\ivan\matam3\wet_files\MtmVec.cpp -o CMakeFiles\matam_3.dir\wet_files\MtmVec.cpp.s
-
 CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.obj: CMakeFiles/matam_3.dir/flags.make
 CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.obj: ../wet_files/MtmMat.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Eli-PC\Desktop\ivan\matam3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Eli-PC\Desktop\ivan\matam3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.obj"
 	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\matam_3.dir\wet_files\MtmMat.cpp.obj -c C:\Users\Eli-PC\Desktop\ivan\matam3\wet_files\MtmMat.cpp
 
 CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.i: cmake_force
@@ -95,38 +82,36 @@ CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.s"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Eli-PC\Desktop\ivan\matam3\wet_files\MtmMat.cpp -o CMakeFiles\matam_3.dir\wet_files\MtmMat.cpp.s
 
-CMakeFiles/matam_3.dir/wet_files/somemain.cpp.obj: CMakeFiles/matam_3.dir/flags.make
-CMakeFiles/matam_3.dir/wet_files/somemain.cpp.obj: ../wet_files/somemain.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Eli-PC\Desktop\ivan\matam3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/matam_3.dir/wet_files/somemain.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\matam_3.dir\wet_files\somemain.cpp.obj -c C:\Users\Eli-PC\Desktop\ivan\matam3\wet_files\somemain.cpp
+CMakeFiles/matam_3.dir/wet_files/main.cpp.obj: CMakeFiles/matam_3.dir/flags.make
+CMakeFiles/matam_3.dir/wet_files/main.cpp.obj: ../wet_files/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Eli-PC\Desktop\ivan\matam3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/matam_3.dir/wet_files/main.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\matam_3.dir\wet_files\main.cpp.obj -c C:\Users\Eli-PC\Desktop\ivan\matam3\wet_files\main.cpp
 
-CMakeFiles/matam_3.dir/wet_files/somemain.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/matam_3.dir/wet_files/somemain.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Eli-PC\Desktop\ivan\matam3\wet_files\somemain.cpp > CMakeFiles\matam_3.dir\wet_files\somemain.cpp.i
+CMakeFiles/matam_3.dir/wet_files/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/matam_3.dir/wet_files/main.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Eli-PC\Desktop\ivan\matam3\wet_files\main.cpp > CMakeFiles\matam_3.dir\wet_files\main.cpp.i
 
-CMakeFiles/matam_3.dir/wet_files/somemain.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/matam_3.dir/wet_files/somemain.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Eli-PC\Desktop\ivan\matam3\wet_files\somemain.cpp -o CMakeFiles\matam_3.dir\wet_files\somemain.cpp.s
+CMakeFiles/matam_3.dir/wet_files/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/matam_3.dir/wet_files/main.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Eli-PC\Desktop\ivan\matam3\wet_files\main.cpp -o CMakeFiles\matam_3.dir\wet_files\main.cpp.s
 
 # Object files for target matam_3
 matam_3_OBJECTS = \
 "CMakeFiles/matam_3.dir/wet_files/Complex.cpp.obj" \
-"CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.obj" \
 "CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.obj" \
-"CMakeFiles/matam_3.dir/wet_files/somemain.cpp.obj"
+"CMakeFiles/matam_3.dir/wet_files/main.cpp.obj"
 
 # External object files for target matam_3
 matam_3_EXTERNAL_OBJECTS =
 
 matam_3.exe: CMakeFiles/matam_3.dir/wet_files/Complex.cpp.obj
-matam_3.exe: CMakeFiles/matam_3.dir/wet_files/MtmVec.cpp.obj
 matam_3.exe: CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.obj
-matam_3.exe: CMakeFiles/matam_3.dir/wet_files/somemain.cpp.obj
+matam_3.exe: CMakeFiles/matam_3.dir/wet_files/main.cpp.obj
 matam_3.exe: CMakeFiles/matam_3.dir/build.make
 matam_3.exe: CMakeFiles/matam_3.dir/linklibs.rsp
 matam_3.exe: CMakeFiles/matam_3.dir/objects1.rsp
 matam_3.exe: CMakeFiles/matam_3.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Eli-PC\Desktop\ivan\matam3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable matam_3.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Eli-PC\Desktop\ivan\matam3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable matam_3.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\matam_3.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

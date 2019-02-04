@@ -82,6 +82,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Eli-PC/Desktop/ivan/matam3/wet_files/Auxilaries.h">
+			<Option target="matam_3"/>
+		</Unit>
 		<Unit filename="C:/Users/Eli-PC/Desktop/ivan/matam3/wet_files/Complex.cpp">
 			<Option target="matam_3"/>
 		</Unit>
@@ -103,13 +106,10 @@
 		<Unit filename="C:/Users/Eli-PC/Desktop/ivan/matam3/wet_files/MtmMatTriag.h">
 			<Option target="matam_3"/>
 		</Unit>
-		<Unit filename="C:/Users/Eli-PC/Desktop/ivan/matam3/wet_files/MtmVec.cpp">
-			<Option target="matam_3"/>
-		</Unit>
 		<Unit filename="C:/Users/Eli-PC/Desktop/ivan/matam3/wet_files/MtmVec.h">
 			<Option target="matam_3"/>
 		</Unit>
-		<Unit filename="C:/Users/Eli-PC/Desktop/ivan/matam3/wet_files/somemain.cpp">
+		<Unit filename="C:/Users/Eli-PC/Desktop/ivan/matam3/wet_files/main.cpp">
 			<Option target="matam_3"/>
 		</Unit>
 		<Unit filename="C:/Users/Eli-PC/Desktop/ivan/matam3/CMakeLists.txt">

@@ -1,4 +1,5 @@
 #include "Complex.h"
+
 namespace MtmMath {
     Complex::Complex(double r, double i) {
         re = r;
@@ -62,5 +63,4 @@ namespace MtmMath {
     double Complex::Im() const {
         return im;
     }
-
 }
