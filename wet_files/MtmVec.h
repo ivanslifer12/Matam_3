@@ -85,7 +85,7 @@ namespace MtmMath {
         }
 
         iterator end() {
-            return iterator((size_t) this->value.size());
+            return iterator((size_t) this->value.size()-1);
         }
 
         nonzero_iterator nzbegin() {
@@ -102,7 +102,7 @@ namespace MtmMath {
                     len++;
             }
 
-            return nonzero_iterator(len);
+            return nonzero_iterator(len-1);
         }
 
         ~MtmVec() = default;
@@ -355,7 +355,7 @@ namespace MtmMath {
 
     template<typename T>
     MtmVec<T> MtmVec<T>::operator+(const MtmVec<T> &right) {
-        if (this->getDimension() != right.getDimension())
+        if (this->getDimension() != right.getDimension() || this->transposed != right.transposed)
             throw MtmExceptions::DimensionMismatch();
 
         MtmVec<T> result = MtmVec<T>(this->getLength(), T());

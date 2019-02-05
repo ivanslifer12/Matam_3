@@ -147,11 +147,7 @@ void vector_test() {
         assert(res[i] == 1);
     }
     int i = 0;
-    MtmVec<int>::nonzero_iterator nz_it2 = res.nzbegin();
-    ++nz_it2;
-    int a = *nz_it2;
-    a = 0;
-    for (MtmVec<int>::nonzero_iterator nz_it = res.nzbegin(); nz_it != res.nzend(); ++nz_it, i++) {
+    for (MtmVec<int>::nonzero_iterator nz_it = res.nzbegin(); nz_it != res.nzend(); ++nz_it, ++i) {
         auto x = *nz_it;
         assert(x == 1);
     }
