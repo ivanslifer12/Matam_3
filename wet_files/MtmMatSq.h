@@ -16,6 +16,7 @@ namespace MtmMath {
         /*
          * Rectangular Matrix constructor, m is the number of rows and columns in the matrix
          * and val is the initial value for the matrix elements
+         * Algorithm:we must check with try if col=row -> then activate the normal cToR
          */
         MtmMatSq (size_t m, const T& val=T());
     };

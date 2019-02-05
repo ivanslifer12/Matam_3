@@ -9,10 +9,10 @@ set(SOURCE_FILES
         wet_files/Complex.cpp
         wet_files/MtmVec.h
         wet_files/MtmMat.h
-        wet_files/MtmMat.cpp
+        #wet_files/MtmMat.cpp
         wet_files/MtmMatSq.h
         wet_files/MtmMatTriag.h
-        wet_files/main.cpp
+        #wet_files/main.cpp
         wet_files/Complex.cpp)
 #
 # wet_files/test.cpp

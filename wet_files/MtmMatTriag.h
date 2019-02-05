@@ -20,11 +20,16 @@ namespace MtmMath {
          * Triangular Matrix constructor, m is the number of rows and columns in the matrix,
          * val is the initial value for the matrix elements and isUpper_ is whether it is upper
          * Rectangular matrix (true means it is)
+         * Algorithm: Use MtmMatTriag cToR -> Check the kind of the matrix ->
+         * apply 0 data acordinly with double iterator loop.
          */
         MtmMatTriag<T> (size_t m, const T& val=T(), bool isUpper_t=true);
 
 
     };
+
+
+
 
 }
 

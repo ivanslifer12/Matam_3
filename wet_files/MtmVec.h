@@ -194,7 +194,7 @@ namespace MtmMath {
     MtmVec<T>::MtmVec(size_t m, const T &val) : dime(m, 1) {
         this->value = std::vector<T>(m);
         for (auto i = this->value.begin(); i < this->value.end(); i++) {
-            //this->distance(value.begin(),i) = val;
+            this->distance(value.begin(),i) = val;
         }
     }
 

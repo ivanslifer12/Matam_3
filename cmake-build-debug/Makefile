@@ -150,60 +150,6 @@ wet_files/Complex.cpp.s:
 	$(MAKE) -f CMakeFiles/matam_3.dir/build.make CMakeFiles/matam_3.dir/wet_files/Complex.cpp.s
 .PHONY : wet_files/Complex.cpp.s
 
-wet_files/MtmMat.o: wet_files/MtmMat.cpp.o
-
-.PHONY : wet_files/MtmMat.o
-
-# target to build an object file
-wet_files/MtmMat.cpp.o:
-	$(MAKE) -f CMakeFiles/matam_3.dir/build.make CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.o
-.PHONY : wet_files/MtmMat.cpp.o
-
-wet_files/MtmMat.i: wet_files/MtmMat.cpp.i
-
-.PHONY : wet_files/MtmMat.i
-
-# target to preprocess a source file
-wet_files/MtmMat.cpp.i:
-	$(MAKE) -f CMakeFiles/matam_3.dir/build.make CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.i
-.PHONY : wet_files/MtmMat.cpp.i
-
-wet_files/MtmMat.s: wet_files/MtmMat.cpp.s
-
-.PHONY : wet_files/MtmMat.s
-
-# target to generate assembly for a file
-wet_files/MtmMat.cpp.s:
-	$(MAKE) -f CMakeFiles/matam_3.dir/build.make CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.s
-.PHONY : wet_files/MtmMat.cpp.s
-
-wet_files/main.o: wet_files/main.cpp.o
-
-.PHONY : wet_files/main.o
-
-# target to build an object file
-wet_files/main.cpp.o:
-	$(MAKE) -f CMakeFiles/matam_3.dir/build.make CMakeFiles/matam_3.dir/wet_files/main.cpp.o
-.PHONY : wet_files/main.cpp.o
-
-wet_files/main.i: wet_files/main.cpp.i
-
-.PHONY : wet_files/main.i
-
-# target to preprocess a source file
-wet_files/main.cpp.i:
-	$(MAKE) -f CMakeFiles/matam_3.dir/build.make CMakeFiles/matam_3.dir/wet_files/main.cpp.i
-.PHONY : wet_files/main.cpp.i
-
-wet_files/main.s: wet_files/main.cpp.s
-
-.PHONY : wet_files/main.s
-
-# target to generate assembly for a file
-wet_files/main.cpp.s:
-	$(MAKE) -f CMakeFiles/matam_3.dir/build.make CMakeFiles/matam_3.dir/wet_files/main.cpp.s
-.PHONY : wet_files/main.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -216,12 +162,6 @@ help:
 	@echo "... wet_files/Complex.o"
 	@echo "... wet_files/Complex.i"
 	@echo "... wet_files/Complex.s"
-	@echo "... wet_files/MtmMat.o"
-	@echo "... wet_files/MtmMat.i"
-	@echo "... wet_files/MtmMat.s"
-	@echo "... wet_files/main.o"
-	@echo "... wet_files/main.i"
-	@echo "... wet_files/main.s"
 .PHONY : help
 
 

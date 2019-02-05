@@ -1,7 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/matam_3.dir/wet_files/Complex.cpp.o"
-  "CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.o"
-  "CMakeFiles/matam_3.dir/wet_files/main.cpp.o"
   "matam_3.pdb"
   "matam_3"
 )

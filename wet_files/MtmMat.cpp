@@ -10,10 +10,7 @@
 using std::size_t;
 
 using namespace MtmMath;
-//must rewrite this
 
-template<typename T>
-MtmMat<T>::MtmMat(Dimensions dim_t, const T &val) {}
 
 
 
