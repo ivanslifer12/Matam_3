@@ -1,3 +1,0 @@
-/home/lambda7/CLionProjects/Matam_3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/lambda7/CLionProjects/Matam_3/cmake-build-debug/CMakeFiles/matam_3.dir
-/home/lambda7/CLionProjects/Matam_3/cmake-build-debug/CMakeFiles/edit_cache.dir

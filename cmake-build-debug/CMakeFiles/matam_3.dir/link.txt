@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-/usr/bin/c++   -pedantic-errors  -Wall -Werror -DNDEBUG -std=c++11 -g   CMakeFiles/matam_3.dir/wet_files/Complex.cpp.o  -o matam_3 
-=======
-/usr/bin/c++   -pedantic-errors  -Wall -Werror -DNDEBUG -std=c++11 -g   CMakeFiles/matam_3.dir/wet_files/Complex.cpp.o CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.o CMakeFiles/matam_3.dir/wet_files/main.cpp.o  -o matam_3 
->>>>>>> master
