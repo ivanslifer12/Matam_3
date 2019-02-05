@@ -1,3 +1,1 @@
-"D:\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\matam_3.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\matam_3.dir/objects.a @CMakeFiles\matam_3.dir\objects1.rsp
-C:\MinGW\bin\g++.exe  -pedantic-errors  -Wall -Werror -DNDEBUG -std=c++11 -g   -Wl,--whole-archive CMakeFiles\matam_3.dir/objects.a -Wl,--no-whole-archive  -o matam_3.exe -Wl,--out-implib,libmatam_3.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\matam_3.dir\linklibs.rsp
+/usr/bin/c++   -pedantic-errors  -Wall -Werror -DNDEBUG -std=c++11 -g   CMakeFiles/matam_3.dir/wet_files/Complex.cpp.o CMakeFiles/matam_3.dir/wet_files/MtmMat.cpp.o CMakeFiles/matam_3.dir/wet_files/main.cpp.o  -o matam_3 
