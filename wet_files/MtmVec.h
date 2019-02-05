@@ -23,6 +23,7 @@ namespace MtmMath {
         Dimensions dime;
         std::vector<T> value;
         //needed? bool is_upper;
+    protected:
         bool transposed = false;
     public:
         class nonzero_iterator;
@@ -32,7 +33,7 @@ namespace MtmMath {
         /*
          * Vector constructor, m is the number of elements in it and val is the initial value for the matrix elements
         */
-        MtmVec(size_t m, const T &val = T());
+        explicit MtmVec(size_t m, const T &val = T());
 
         MtmVec();
 
@@ -264,9 +265,9 @@ namespace MtmMath {
 
     template<typename T>
     MtmVec<T> operator+(const MtmVec<T> &vec1, const MtmVec<T> &vec2) {
-        if (vec1.getDimension() != vec2.getDimension())
+        if (vec1.getDimension() != vec2.getDimension() || vec2.transposed != vec1.transposed)
             throw MtmExceptions::DimensionMismatch();
-        MtmVec<T> result = MtmVec<T>(vec1.getLength(), T());
+        MtmVec<T> result = MtmVec<T>(vec1);
         for (size_t i = 0; i < vec1.getLength(); i++)
             result[i] = vec1[i] + vec2[i];
 
@@ -275,10 +276,10 @@ namespace MtmMath {
 
     template<typename T>
     MtmVec<T> operator-(const MtmVec<T> &vec1, const MtmVec<T> &vec2) {
-        if (vec1.getDimension() != vec2.getDimension())
+        if (vec1.getDimension() != vec2.getDimension() || vec2.transposed != vec1.transposed)
             throw MtmExceptions::DimensionMismatch();
 
-        MtmVec<T> result = MtmVec<T>(vec1.getLength(), T());
+        MtmVec<T> result = MtmVec<T>(vec1);
         for (size_t i = 0; i < vec1.getLength(); i++)
             result[i] = vec1[i] - vec2[i];
 
@@ -298,7 +299,7 @@ namespace MtmMath {
 
     template<typename T>
     MtmVec<T> operator+(const MtmVec<T> &vec, const T &scalar) {
-        MtmVec<T> result = MtmVec<T>(vec.getLength(), T());
+        MtmVec<T> result = MtmVec<T>(vec);
         for (size_t i = 0; i < vec.getLength(); i++) {
             result[i] = vec[i] + scalar;
         }
@@ -358,9 +359,9 @@ namespace MtmMath {
         if (this->getDimension() != right.getDimension() || this->transposed != right.transposed)
             throw MtmExceptions::DimensionMismatch();
 
-        MtmVec<T> result = MtmVec<T>(this->getLength(), T());
+        MtmVec<T> result = MtmVec<T>(*this);
         for (size_t i = 0; i < this->getLength(); i++)
-            result[i] = (*this)[i] + right[i];
+            result[i] = result[i] + right[i];
 
         return result;
     }
@@ -419,9 +420,9 @@ namespace MtmMath {
         if (this->getDimension() != right.getDimension())
             throw MtmExceptions::DimensionMismatch();
 
-        MtmVec<T> result = MtmVec<T>(this->getLength(), T());
+        MtmVec<T> result = MtmVec<T>(*this);
         for (size_t i = 0; i < this->getLength(); i++)
-            result[i] = (*this)[i] * right[i];
+            result[i] = result[i] * right[i];
 
         return result;
     }
