@@ -10,6 +10,9 @@
 #define MAX(a, b) (a>b ? a : b)
 
 using namespace std;
+using std::size_t;
+
+using namespace MtmMath;
 
 namespace MtmMath {
 
@@ -27,7 +30,7 @@ namespace MtmMath {
         /*
          * Vector constructor, m is the number of elements in it and val is the initial value for the matrix elements
         */
-        MtmVec(size_t m, const T &val = T());
+        explicit MtmVec(size_t m, const T &val = T());
 
         MtmVec();
 
@@ -77,6 +80,8 @@ namespace MtmMath {
             return nonzero_iterator(*this);
         }
 
+        int distance(iterator first, iterator last);
+
         nonzero_iterator nzend() {
             size_t len = 0;
             for (size_t j = 0; j < (size_t) this->value.size(); ++j) {
@@ -86,6 +91,8 @@ namespace MtmMath {
 
             return nonzero_iterator(len);
         }
+
+
 
         ~MtmVec() = default;
 
@@ -177,15 +184,11 @@ namespace MtmMath {
     MtmVec<T> operator-(const T &scalar, const MtmVec<T> &vec);
 
     template<typename T>
-    MtmVec<T> operator*(const MtmVec<T> &vec, const T &scalar);
+    MtmVec<T> operator*(const MtmVec<T> &vec, T &scalar);
 
     template<typename T>
     MtmVec<T> operator*(const T &scalar, const MtmVec<T> &vec);
 
-
-    using std::size_t;
-
-    using namespace MtmMath;
 
     template<typename T>
     MtmVec<T>::MtmVec(size_t m, const T &val) : dime(m, 1) {
@@ -289,7 +292,7 @@ namespace MtmMath {
     }
 
     template<typename T>
-    MtmVec<T> operator*(const MtmVec<T> &vec, const T &scalar) {
+    MtmVec<T> operator*(const MtmVec<T> &vec, T &scalar) {
         MtmVec<T> result = MtmVec<T>(vec);
         for (size_t i = 0; i < vec.getLength(); i++)
             result[i] *= scalar;
@@ -339,6 +342,15 @@ namespace MtmMath {
             result[i] = (*this)[i] * right[i];
 
         return result;
+    }
+
+    template<typename T>
+    int MtmVec<T>::distance(MtmVec::iterator first, MtmVec::iterator last) {
+        int size = 0;
+        for (auto i = first.begin(); i < last.end(); i++) {
+            size++;
+        }
+        return size;
     }
 
 //iterator
