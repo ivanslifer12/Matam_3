@@ -94,6 +94,7 @@
 		<Unit filename="/home/lambda7/CLionProjects/Matam_3/wet_files/MtmExceptions.h">
 			<Option target="matam_3"/>
 		</Unit>
+<<<<<<< HEAD
 		<Unit filename="/home/lambda7/CLionProjects/Matam_3/wet_files/MtmMat.h">
 			<Option target="matam_3"/>
 		</Unit>
@@ -106,6 +107,26 @@
 		<Unit filename="/home/lambda7/CLionProjects/Matam_3/wet_files/MtmVec.h">
 			<Option target="matam_3"/>
 		</Unit>
+=======
+		<Unit filename="/home/lambda7/CLionProjects/Matam_3/wet_files/MtmMat.cpp">
+			<Option target="matam_3"/>
+		</Unit>
+		<Unit filename="/home/lambda7/CLionProjects/Matam_3/wet_files/MtmMat.h">
+			<Option target="matam_3"/>
+		</Unit>
+		<Unit filename="/home/lambda7/CLionProjects/Matam_3/wet_files/MtmMatSq.h">
+			<Option target="matam_3"/>
+		</Unit>
+		<Unit filename="/home/lambda7/CLionProjects/Matam_3/wet_files/MtmMatTriag.h">
+			<Option target="matam_3"/>
+		</Unit>
+		<Unit filename="/home/lambda7/CLionProjects/Matam_3/wet_files/MtmVec.h">
+			<Option target="matam_3"/>
+		</Unit>
+		<Unit filename="/home/lambda7/CLionProjects/Matam_3/wet_files/main.cpp">
+			<Option target="matam_3"/>
+		</Unit>
+>>>>>>> master
 		<Unit filename="/home/lambda7/CLionProjects/Matam_3/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
