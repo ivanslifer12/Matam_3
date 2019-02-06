@@ -49,9 +49,9 @@ namespace MtmMath {
 
         class MtmMatAccessor {
             int row;
-            MtmMat<T> *mat;
+            const MtmMat<T> *mat;
         public:
-            explicit MtmMatAccessor(int row, MtmMat<T> *mat) : row(row), mat(mat) {}
+            explicit MtmMatAccessor(const MtmMat<T> *mat, size_t row) : row(row), mat(&mat)  {}
 
             MtmMatAccessor(MtmMatAccessor &copy) = default;
 
@@ -67,7 +67,7 @@ namespace MtmMath {
         };
 
         MtmMatAccessor& operator[](const size_t row) const {
-            auto x = MtmMatAccessor(row, this);
+            auto x = MtmMatAccessor(this, row);
             return x;
         }
 
