@@ -8,7 +8,8 @@
 #include <type_traits>
 
 #define V2D(rowsize, colsize, type, name) vector<vector<(type)>>name((rowsize),vector<(type)>(colsize));
-
+#include <bits/stdc++.h>
+using namespace std;
 using std::size_t;
 
 namespace MtmMath {
@@ -34,11 +35,17 @@ namespace MtmMath {
 
         explicit MtmMat(Dimensions dim_t, const T &val = T()) {
             try {
-                //todo check if dim is valid
+                if (dim_t.getRow()==0 || dim_t.getCol()==0)
+                    throw MtmExceptions::IllegalInitialization();
+
                 dim = dim_t;
 
                 matrix = std::vector<std::vector<T>>();
-                this->reshape(dim, val); //todo with ampersand or not
+                this->dim = dim_t;
+                matrix.resize(dim_t.getRow(), std::vector<T>());
+                for (int i = 0; i < matrix.size(); i++) {
+                    matrix[i].resize(dim_t.getCol(), val);
+                }
             } catch (std::bad_alloc&) {
                 throw MtmExceptions::OutOfMemory();
             }
@@ -105,15 +112,16 @@ namespace MtmMath {
         virtual Proxy operator[](const size_t row) {
             if (row >= this->matrix.size())
                 throw MtmExceptions::AccessIllegalElement();
-
-            std::vector<T> x = this->matrix[row];
+            auto x = this->matrix[row];
             return Proxy(x);
         }
 
+/*
         virtual const Proxy operator[](const size_t row) const {
             std::vector<T> x = this->matrix[row];
             return Proxy(x);
         }
+*/
 
 
         T &at(size_t row, size_t column) {
@@ -156,6 +164,8 @@ namespace MtmMath {
          * reshapes matrix so linear elements inner_stdvector are the same without changing num of elements.
          */
         virtual void reshape(Dimensions newDim, const T &val = T()) {
+            if (newDim.getCol() != newDim.getRow())
+                throw MtmExceptions::ChangeMatFail();
             this->dim = newDim;
             matrix.resize(newDim.getRow(), std::vector<T>());
             for (int i = 0; i < matrix.size(); i++) {

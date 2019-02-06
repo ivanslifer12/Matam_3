@@ -84,9 +84,13 @@ void FuncExample() {
     MtmVec<int> v(5,0);
     v[1]=3;v[2]=-7;v[3]=-1;v[4]=2;
     MtmMat<int> m(Dimensions(2,3),0);
-    m[0][1]=1;m[1][0]=2;
-    m[0][1]=3;m[1][1]=2;
-    m[0][2]=5;m[1][2]=-6;
+    m[0][1]=1;
+    m[1][0]=2;
+    m[0][1]=3;
+    m[1][1]=2;
+    m[0][2]=5;
+    m[1][2]=-6;
+
     maxAbsolute f;
     assert (v.vecFunc(f)==7);
     MtmVec<int> res(m.matFunc(f));
@@ -122,5 +126,7 @@ int main() {
     dataTypes();
     FuncExample();
     iterators();
+    std::cout << "niggggggaaa died from herniaaaa";
+    return 5;
 }
 

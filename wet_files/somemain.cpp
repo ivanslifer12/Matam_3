@@ -6,25 +6,14 @@
 #include <vector>
 #include <functional>
 
-int op_increase(int* i) { (*i)--; }
-
 int main() {
-    auto d = Dimensions(1, 5);
-
-    auto x = MtmMat<int>(d, 1);
-    x = x+-x;
-    x.print();
-    //auto v = std::vector<std::vector<int>>(5,std::vector<int>(5,1));
-    ////https://stackoverflow.com/questions/641864/returning-a-pointer-to-a-vector-element-in-c
-    //for (auto i = v.begin(); i != v.end(); ++i) {
-    //    for (auto j = (*i).begin(); j != (*i).end(); ++j) {
-    //        op_increase(&(*j));
-    //        cout << *j << " ";
-    //    }
-    //    cout << "\n";
-    //}
-
-
-
-    auto h = 1;
+    MtmMat<int> m(Dimensions(2,3),0);
+    m[0][1]=1;
+    m[1][1]=1;
+    m[0][0]=1;
+    m[1][0]=1;
+    m[0][2]=1;
+    m[1][2]=1;
+    std::cout << m[0][1];
+    return 0;
 }
