@@ -99,18 +99,19 @@ void FuncExample() {
 
 void iterators() {
     MtmMatSq<int> m(2,0);
-    m[1][0]=1;m[1][1]=2;
+    m[1][0]=1;
+    m[1][1]=2;
 
     int res_it[]={0,1,0,2};
-    int res_nz_it[]={1,2};
 
     int i=0;
     for (MtmMatSq<int>::iterator it=m.begin();it!=m.end();++it) {
         assert (res_it[i]==(*it));
         ++i;
     }
-
     i=0;
+    int res_nz_it[]={1,2};
+
     for (MtmMatSq<int>::nonzero_iterator it=m.nzbegin();it!=m.nzend();++it) {
         assert (res_nz_it[i]==(*it));
         ++i;
@@ -126,7 +127,6 @@ int main() {
     dataTypes();
     FuncExample();
     iterators();
-    std::cout << "niggggggaaa died from herniaaaa";
     return 5;
 }
 

@@ -8,7 +8,9 @@
 #include <type_traits>
 
 #define V2D(rowsize, colsize, type, name) vector<vector<(type)>>name((rowsize),vector<(type)>(colsize));
+
 #include <bits/stdc++.h>
+
 using namespace std;
 using std::size_t;
 
@@ -35,7 +37,7 @@ namespace MtmMath {
 
         explicit MtmMat(Dimensions dim_t, const T &val = T()) {
             try {
-                if (dim_t.getRow()==0 || dim_t.getCol()==0)
+                if (dim_t.getRow() == 0 || dim_t.getCol() == 0)
                     throw MtmExceptions::IllegalInitialization();
 
                 dim = dim_t;
@@ -43,10 +45,10 @@ namespace MtmMath {
                 matrix = std::vector<std::vector<T>>();
                 this->dim = dim_t;
                 matrix.resize(dim_t.getRow(), std::vector<T>());
-                for (int i = 0; i < matrix.size(); i++) {
+                for (size_t i = 0; i < matrix.size(); i++) {
                     matrix[i].resize(dim_t.getCol(), val);
                 }
-            } catch (std::bad_alloc&) {
+            } catch (std::bad_alloc &) {
                 throw MtmExceptions::OutOfMemory();
             }
         };
@@ -109,19 +111,19 @@ namespace MtmMath {
 
         };*/
 
-        virtual Proxy operator[](const size_t row) {
+        virtual std::vector<T> &operator[](const size_t row) {
             if (row >= this->matrix.size())
                 throw MtmExceptions::AccessIllegalElement();
-            auto x = this->matrix[row];
-            return Proxy(x);
+            return this->matrix[row];
+//            return Proxy(x);
         }
 
-/*
-        virtual const Proxy operator[](const size_t row) const {
-            std::vector<T> x = this->matrix[row];
-            return Proxy(x);
+
+        virtual const std::vector<T> &operator[](const size_t row) const {
+            if (row >= this->matrix.size())
+                throw MtmExceptions::AccessIllegalElement();
+            return this->matrix[row];
         }
-*/
 
 
         T &at(size_t row, size_t column) {
@@ -143,14 +145,16 @@ namespace MtmMath {
          */
         template<typename Func>
         MtmVec<T> matFunc(Func &f) {
-            MtmVec<T> out = MtmVec<T>(this->dim.getRow());
-            for (size_t i = 0; i < this->dim.getRow(); ++i) {
-                for (size_t j = 0; j < this->dim.getCol(); ++j) {
-                    f(this->at(i, j));
-                }
-                out[i] = *f;
+            f = Func();
+            MtmMat<T> transposed(*this);
+            transposed.transpose();
+            MtmVec<T> ret(dim.getCol());
+            for (unsigned int i = 0; i < dim.getCol(); i++) {
+                auto x = MtmVec<T>(transposed[i]);
+                T col = x.vecFunc(f);
+                ret[i] = col;
             }
-            return out;
+            return ret;
         }
 
         /*
@@ -165,10 +169,10 @@ namespace MtmMath {
          */
         virtual void reshape(Dimensions newDim, const T &val = T()) {
             if (newDim.getCol() != newDim.getRow())
-                throw MtmExceptions::ChangeMatFail();
+                throw MtmExceptions::ChangeMatFail(this->dim, newDim);
             this->dim = newDim;
             matrix.resize(newDim.getRow(), std::vector<T>());
-            for (int i = 0; i < matrix.size(); i++) {
+            for (size_t i = 0; i < matrix.size(); i++) {
                 matrix[i].resize(newDim.getCol(), val);
             }
         }
@@ -189,8 +193,8 @@ namespace MtmMath {
 
             vector<vector<T> > trans_vec(matrix[0].size(), vector<T>());
 
-            for (int i = 0; i < matrix.size(); i++) {
-                for (int j = 0; j < matrix[i].size(); j++) {
+            for (size_t i = 0; i < matrix.size(); i++) {
+                for (size_t j = 0; j < matrix[i].size(); j++) {
                     trans_vec[j].push_back(matrix[i][j]);
                 }
             }
@@ -223,7 +227,7 @@ namespace MtmMath {
         }
 
         iterator end() {
-            return iterator((size_t) this->matrix.size() - 1);
+            return iterator(this->GetTotalLength());
         }
 
         nonzero_iterator nzbegin() {
@@ -232,7 +236,6 @@ namespace MtmMath {
 
         nonzero_iterator nzend() {
             size_t len = 0;
-            auto totalsize = (size_t) this->matrix.size();
             for (auto row = this->matrix.begin(); row != this->matrix.end(); ++row) {
                 for (auto column = (*row).begin(); column != (*row).end(); ++column) {
                     if (*column != 0)
@@ -246,26 +249,27 @@ namespace MtmMath {
         class iterator {
         private:
             bool is_end;
-            bool isFirst = true;
         protected:
-            MtmMat<T> *inner_matrix;
+            MtmMat<T> *inner_matrix = nullptr;
             size_t index;
             bool is_valid;
         public:
-            explicit iterator(MtmMat<T> &mtmVec);
+            explicit iterator(MtmMat<T> &mat);
 
             explicit iterator(size_t i);
 
-            ~iterator() = default;
+            ~iterator() {
+                if (inner_matrix != nullptr)
+                    delete inner_matrix;
+            };
 
             virtual iterator &operator++() {
                 if (!this->is_valid)
                     return *this;
 
-                if (isFirst)
-                    isFirst = false;
-                else
-                    this->index++;
+
+                this->index++;
+
                 if ((size_t) this->index >= (size_t) this->inner_matrix->GetTotalLength())
                     this->is_valid = false;
 
@@ -280,7 +284,7 @@ namespace MtmMath {
             virtual T &operator*() {
                 auto row = index / inner_matrix->dim.getCol();
                 auto column = index % inner_matrix->dim.getCol();
-                return this->inner_matrix->matrix.at(row).at(column);
+                return this->inner_matrix->matrix[row][column];
             }
 
             bool operator==(const iterator &rhs) const;
@@ -292,7 +296,6 @@ namespace MtmMath {
         class nonzero_iterator : public iterator {
         private:
             size_t real_index = 0;
-            bool isFirst = true;
         public:
             explicit nonzero_iterator(MtmMat<T> &mtmVec);
 
@@ -304,7 +307,7 @@ namespace MtmMath {
             T &operator*() {
                 auto row = real_index / this->inner_matrix->dim.getCol();
                 auto column = real_index % this->inner_matrix->dim.getCol();
-                return this->inner_matrix->matrix.at(row).at(column);
+                return this->inner_matrix->matrix[row][column];
             }
 
             nonzero_iterator &operator++() {
@@ -312,12 +315,9 @@ namespace MtmMath {
                     return *this;
 
                 _next:
-                if (isFirst)
-                    isFirst = false;
-                else {
-                    this->index++;
-                    this->real_index++;
-                }
+
+                this->index++;
+                this->real_index++;
 
                 if ((size_t) this->real_index >= (size_t) this->inner_matrix->GetTotalLength()) {
                     this->is_valid = false;
@@ -331,6 +331,24 @@ namespace MtmMath {
                 }
 
                 return *this;
+            }
+
+            void skip_zeroes() {
+                _next:
+
+                this->index++;
+                this->real_index++;
+
+                if ((size_t) this->real_index >= (size_t) this->inner_matrix->GetTotalLength()) {
+                    this->is_valid = false;
+                    return;
+                }
+
+                if (*(*this) ==
+                    T()) { //one * for getting this object, an other * for getting current value from overload.
+                    this->index--;
+                    goto _next;
+                }
             }
         };
     };
@@ -419,37 +437,43 @@ namespace MtmMath {
     template<typename T>
     MtmMat<T> MtmMat<T>::operator+(const MtmVec<T> &right) {
         if (this->dim != right.getDimension()) {
-            throw MtmExceptions::DimensionMismatch();
+            throw MtmExceptions::DimensionMismatch(this->dim, right.getDimension());
         }
-        for (size_t row = 0; row < right.GetTotalLength(); ++row) {
-            for (size_t column = 0; column < this->dim.getCol(); ++column) {
-                (*this)[row][column] += right[row]; //todo might
+        auto ret = MtmMat<T>(*this);
+        for (size_t row = 0; row < ret.GetTotalLength(); ++row) {
+            for (size_t column = 0; column < ret.dim.getCol(); ++column) {
+                ret[row][column] += right[row]; //todo might
             }
         }
+        return ret;
     }
 
     template<typename T>
     MtmMat<T> MtmMat<T>::operator-(const MtmVec<T> &right) {
         if (this->dim != right.getDimension()) {
-            throw MtmExceptions::DimensionMismatch();
+            throw MtmExceptions::DimensionMismatch(this->dim, right.getDimension());
         }
-        for (size_t row = 0; row < right.GetTotalLength(); ++row) {
-            for (size_t column = 0; column < this->dim.getCol(); ++column) {
-                (*this)[row][column] -= right[row]; //todo might
+        auto ret = MtmMat<T>(*this);
+        for (size_t row = 0; row < ret.GetTotalLength(); ++row) {
+            for (size_t column = 0; column < ret.dim.getCol(); ++column) {
+                ret[row][column] -= right[row]; //todo might
             }
         }
+        return ret;
     }
 
     template<typename T>
     MtmMat<T> MtmMat<T>::operator*(const MtmVec<T> &right) {
         if (this->dim != right.getDimension()) {
-            throw MtmExceptions::DimensionMismatch();
+            throw MtmExceptions::DimensionMismatch(this->dim, right.getDimension());
         }
-        for (size_t row = 0; row < right.GetTotalLength(); ++row) {
-            for (size_t column = 0; column < this->dim.getCol(); ++column) {
-                (*this)[row][column] *= right[row]; //todo might
+        auto ret = MtmMat<T>(*this);
+        for (size_t row = 0; row < ret.GetTotalLength(); ++row) {
+            for (size_t column = 0; column < ret.dim.getCol(); ++column) {
+                ret[row][column] *= right[row]; //todo might
             }
         }
+        return ret;
     }
 
     template<typename T>
@@ -502,8 +526,10 @@ namespace MtmMath {
 
 //iterator
     template<typename T>
-    MtmMat<T>::iterator::iterator(MtmMat<T> &mtmVec) :  is_end(false), inner_matrix(&mtmVec), index(0), is_valid(true) {
-
+    MtmMat<T>::iterator::iterator(MtmMat<T> &mat) :  is_end(false), index(0), is_valid(true) {
+        MtmMat<T> *x = new MtmMat<T>(mat);
+        x->transpose();
+        inner_matrix = x;
     }
 
     template<typename T>
@@ -517,11 +543,13 @@ namespace MtmMath {
     }
 
     template<typename T>
-    MtmMat<T>::iterator::iterator(size_t i) : is_end(true), inner_matrix(), index(i), is_valid(false) {}
+    MtmMat<T>::iterator::iterator(size_t i) : is_end(true), inner_matrix(nullptr), index(i), is_valid(false) {}
 
 //nonzeroiterator
     template<typename T>
-    MtmMat<T>::nonzero_iterator::nonzero_iterator(MtmMat<T> &mtmVec) : iterator(mtmVec) {}
+    MtmMat<T>::nonzero_iterator::nonzero_iterator(MtmMat<T> &mtmVec) : iterator(mtmVec) {
+        this->skip_zeroes();
+    }
 
     template<typename T>
     MtmMat<T>::nonzero_iterator::nonzero_iterator(size_t i) : iterator(i) {}

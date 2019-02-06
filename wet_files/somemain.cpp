@@ -8,6 +8,8 @@
 
 int main() {
     MtmMat<int> m(Dimensions(2,3),0);
+    auto p = m[0];
+    auto p2 = m[0][1];
     m[0][1]=1;
     m[1][1]=1;
     m[0][0]=1;

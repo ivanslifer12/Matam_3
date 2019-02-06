@@ -39,6 +39,8 @@ namespace MtmMath {
 
         MtmVec(const MtmVec<T> &vector) = default;
 
+        explicit MtmVec(std::vector<T> vec) : inner_stdvector(vec), dime(Dimensions((size_t)vec.size(), (size_t)1)) {}
+
         MtmVec<T> &operator=(const MtmVec<T> &vector) = default;
 
         T &operator[](int index);
@@ -271,6 +273,7 @@ namespace MtmMath {
     template<class T>
     template<class Func>
     T MtmVec<T>::vecFunc(Func &f) const {
+        f = Func();
         for (int i = 0; i < this->getLength(); i++)
             f((*this)[i]);
 
