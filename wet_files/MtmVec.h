@@ -98,6 +98,8 @@ namespace MtmMath {
          */
         size_t GetTotalLength();
 
+        const size_t GetTotalLength() const;
+
         nonzero_iterator nzend() {
             size_t len = 0;
             size_t totalsize = (size_t) this->inner_stdvector.size();
@@ -228,12 +230,16 @@ namespace MtmMath {
 
     template<typename T>
     MtmVec<T>::MtmVec(size_t m, const T &val) : dime(m, (size_t) 1) {
-        if (m <= 0)
-            throw MtmExceptions::IllegalInitialization();
-        auto vec = std::vector<T>(m);
-        for (size_t i = 0; i < (size_t) vec.size(); i++)
-            vec[i] = val;
-        this->inner_stdvector = vec;
+        try {
+            if (m <= 0)
+                throw MtmExceptions::IllegalInitialization();
+            auto vec = std::vector<T>(m);
+            for (size_t i = 0; i < (size_t) vec.size(); i++)
+                vec[i] = val;
+            this->inner_stdvector = vec;
+        } catch (std::bad_alloc &) {
+            throw MtmExceptions::OutOfMemory();
+        }
     }
 
     template<typename T>
@@ -437,9 +443,13 @@ namespace MtmMath {
 
     template<typename T>
     size_t MtmVec<T>::GetTotalLength() {
-        return this->inner_stdvector->size();
+        return this->inner_stdvector.size();
     }
 
+    template<typename T>
+    const size_t MtmVec<T>::GetTotalLength() const {
+        return this->inner_stdvector.size();
+    }
 
 //iterator
     template<typename T>

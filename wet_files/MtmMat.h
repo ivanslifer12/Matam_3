@@ -33,11 +33,15 @@ namespace MtmMath {
          */
 
         explicit MtmMat(Dimensions dim_t, const T &val = T()) {
-            //todo check if dim is valid
-            dim = dim_t;
+            try {
+                //todo check if dim is valid
+                dim = dim_t;
 
-            matrix = std::vector<std::vector<T>>();
-            this->reshape(dim, val); //todo with ampersand or not
+                matrix = std::vector<std::vector<T>>();
+                this->reshape(dim, val); //todo with ampersand or not
+            } catch (std::bad_alloc&) {
+                throw MtmExceptions::OutOfMemory();
+            }
         };
 
         MtmMat() = default;
@@ -46,42 +50,79 @@ namespace MtmMath {
 
         virtual ~MtmMat() = default;
 
-        virtual MtmMat<T> &operator=(const MtmMat<T> &vector) = default;
+        MtmMat<T> &operator=(const MtmMat<T> &vector) = default;
 
-        class MtmMatAccessor {
-            size_t row;
-            MtmMat<T> *mat;
+        class Proxy { //see: https://stackoverflow.com/a/48297585/1481186
+            friend class MtmMat<T>;
+
+            std::vector<T> &v;
+
+            explicit Proxy(std::vector<T> &v) : v(v) {}
+
         public:
-            explicit MtmMatAccessor(MtmMat<T> *mat, size_t row) : row(row), mat(mat) {}
+            T &operator[](const size_t c) const { return (v)[c]; }
+
+            T &operator[](const size_t c) { return (v)[c]; }
+        };
+
+/*
+        class MtmMatAccessor {
+            const size_t row;
+            MtmMat<T> *mat;
+
+        public:
+            MtmMatAccessor(MtmMat<T> *mat, const size_t row) : row(row), mat(mat) {}
+
+
+            MtmMatAccessor(const MtmMatAccessor &acc) = default;
 
             ~MtmMatAccessor() = default;
 
-            T &operator[](size_t column)  {
-                return mat->at(this->row, column);
+            T &operator[](const size_t column) {
+                if (column < 0 || ((column > 0) && (unsigned int) column >= this->mat->dim.getRow())) {
+                    throw MtmExceptions::AccessIllegalElement();
+                }
+                //return (const_cast<T>(mat))[row][column];
+
+                return mat->matrix[row][column];
             }
 
-            const T &operator[](size_t column) const {
-                return mat->at(this->row, column);
+            T &operator[](const int column) {
+                if (column < 0 || ((column > 0) && (unsigned int) column >= this->mat->dim.getRow())) {
+                    throw MtmExceptions::AccessIllegalElement();
+                }
+                //return (const_cast<T>(mat))[row][column];
+
+                return mat->matrix[row][column];
             }
-        };
 
-        MtmMatAccessor operator[](size_t row) {
-            return MtmMatAccessor(this, row);
+            const T &operator[](const size_t column) const {
+                return mat->matrix[row][column];
+            }
+
+        };*/
+
+        virtual Proxy operator[](const size_t row) {
+            if (row >= this->matrix.size())
+                throw MtmExceptions::AccessIllegalElement();
+
+            std::vector<T> x = this->matrix[row];
+            return Proxy(x);
         }
 
-        const MtmMatAccessor operator[](size_t row) const {
-            return MtmMatAccessor(this, row);
+        virtual const Proxy operator[](const size_t row) const {
+            std::vector<T> x = this->matrix[row];
+            return Proxy(x);
         }
 
 
-
-        T &at(size_t row, size_t column)  {
+        T &at(size_t row, size_t column) {
             if (row >= this->matrix.size() || column >= this->matrix[row].size())
                 throw MtmExceptions::AccessIllegalElement();
             return this->matrix[row][column];
         }
 
-        const T &at( size_t row, size_t column) const {
+        const T &at(const size_t row, const size_t column) const {
             if (row >= this->matrix.size() || column >= this->matrix[row].size())
                 throw MtmExceptions::AccessIllegalElement();
             return this->matrix[row][column];
@@ -366,6 +407,42 @@ namespace MtmMath {
     }
 
     template<typename T>
+    MtmMat<T> MtmMat<T>::operator+(const MtmVec<T> &right) {
+        if (this->dim != right.getDimension()) {
+            throw MtmExceptions::DimensionMismatch();
+        }
+        for (size_t row = 0; row < right.GetTotalLength(); ++row) {
+            for (size_t column = 0; column < this->dim.getCol(); ++column) {
+                (*this)[row][column] += right[row]; //todo might
+            }
+        }
+    }
+
+    template<typename T>
+    MtmMat<T> MtmMat<T>::operator-(const MtmVec<T> &right) {
+        if (this->dim != right.getDimension()) {
+            throw MtmExceptions::DimensionMismatch();
+        }
+        for (size_t row = 0; row < right.GetTotalLength(); ++row) {
+            for (size_t column = 0; column < this->dim.getCol(); ++column) {
+                (*this)[row][column] -= right[row]; //todo might
+            }
+        }
+    }
+
+    template<typename T>
+    MtmMat<T> MtmMat<T>::operator*(const MtmVec<T> &right) {
+        if (this->dim != right.getDimension()) {
+            throw MtmExceptions::DimensionMismatch();
+        }
+        for (size_t row = 0; row < right.GetTotalLength(); ++row) {
+            for (size_t column = 0; column < this->dim.getCol(); ++column) {
+                (*this)[row][column] *= right[row]; //todo might
+            }
+        }
+    }
+
+    template<typename T>
     MtmMat<T> operator*(const T &scalar, const MtmMat<T> &vec) {
         return vec * scalar;
     }
@@ -396,7 +473,7 @@ namespace MtmMath {
         auto ret = MtmMat<T>(vec);
         for (auto row = ret.matrix.begin(); row != ret.matrix.end(); ++row) {
             for (auto column = (*row).begin(); column != (*row).end(); ++column) {
-                *column +=  scalar;
+                *column += scalar;
             }
         }
         return ret;

@@ -23,7 +23,7 @@ namespace MtmMath {
                                                                       isUpper(isUpper) {}
 
         MtmMatTriag(const size_t &size, const T &val) : MtmMatSq<T>(Dimensions(size, size), val),
-                                                                      isUpper(false) {}
+                                                        isUpper(false) {}
 
         MtmMatTriag() = default;
 
@@ -34,6 +34,7 @@ namespace MtmMath {
         explicit MtmMatTriag(const MtmMat<T> &vector) : MtmMatSq<T>(vector), isUpper(false) {}
 
         virtual ~MtmMatTriag() = default;
+
     };
 
 
