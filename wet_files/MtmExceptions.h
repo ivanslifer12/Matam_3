@@ -10,7 +10,7 @@ namespace MtmMath {
     namespace MtmExceptions {
         class MtmExceptions : public std::exception {
         public:
-            virtual ~MtmExceptions() throw() {}
+            ~MtmExceptions() noexcept override = default;
         };
 
         /*
@@ -19,7 +19,7 @@ namespace MtmMath {
          */
         class IllegalInitialization : public MtmExceptions {
         public:
-            virtual const char *what() const throw() {
+            const char *what() const noexcept override {
                 return "MtmError: Illegal initialization values";
             }
         };
@@ -30,7 +30,7 @@ namespace MtmMath {
          */
         class OutOfMemory : public MtmExceptions {
         public:
-            virtual const char *what() const throw() {
+            const char *what() const noexcept override {
                 return "MtmError: Out of memory";
             }
         };
@@ -42,7 +42,7 @@ namespace MtmMath {
          */
         class DimensionMismatch : public MtmExceptions {
         public:
-            virtual const char *what() const throw() {
+            const char *what() const noexcept override {
                 return "MtmError: Dimension mismatch: (<mat 1 row>,<mat 1 col>) (<mat 2 row>,<mat 2 col>)";
             }
         };
@@ -54,7 +54,7 @@ namespace MtmMath {
          */
         class ChangeMatFail : public MtmExceptions {
         public:
-            virtual const char *what() const throw() {
+            const char *what() const noexcept override {
                 return "MtmError: Change matrix shape failed from: (<mat row>,<mat col>)"
                        "(<new mat row>,<new mat col>)";
             }
@@ -66,7 +66,7 @@ namespace MtmMath {
          */
         class AccessIllegalElement : public MtmExceptions {
         public:
-            virtual const char *what() const throw() {
+            const char *what() const noexcept override {
                 return "MtmError: Attempt access to illegal element";
             }
         };

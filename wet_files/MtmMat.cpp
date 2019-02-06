@@ -12,25 +12,7 @@ using std::size_t;
 using namespace MtmMath;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+template<typename T>
+T const &MtmMat<T>::MtmMatAccessor::operator[](string) const {
+    return <#initializer#>;
+}

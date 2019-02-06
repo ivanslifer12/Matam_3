@@ -12,23 +12,29 @@ using std::size_t;
 namespace MtmMath {
 
 
-    template <typename T>
-    class MtmMatTriag {
+    template<typename T>
+    class MtmMatTriag : public MtmMatSq<T> {
+        bool isUpper;
     public:
 
-        /*
-         * Triangular Matrix constructor, m is the number of rows and columns in the matrix,
-         * val is the initial value for the matrix elements and isUpper_ is whether it is upper
-         * Rectangular matrix (true means it is)
-         * Algorithm: Use MtmMatTriag cToR -> Check the kind of the matrix ->
-         * apply 0 data acordinly with double iterator loop.
-         */
-        MtmMatTriag<T> (size_t m, const T& val=T(), bool isUpper_t=true);
+        MtmMatTriag(const Dimensions &dim_t, const T &val, bool isUpper) : MtmMatSq<T>(dim_t, val), isUpper(isUpper) {}
 
+        MtmMatTriag(const size_t &size, const T &val, bool isUpper) : MtmMatSq<T>(Dimensions(size, size), val),
+                                                                      isUpper(isUpper) {}
+
+        MtmMatTriag(const size_t &size, const T &val) : MtmMatSq<T>(Dimensions(size, size), val),
+                                                                      isUpper(false) {}
+
+        MtmMatTriag() = default;
+
+        explicit MtmMatTriag(const MtmMat<T> &vector, bool isUpper) : MtmMatSq<T>(vector), isUpper(isUpper) {}
+        explicit MtmMatTriag(const MtmMat<T> &vector) : MtmMatSq<T>(vector), isUpper(false) {}
+
+        explicit MtmMatTriag(const MtmMatTriag<T> &vector) = default;
+
+        virtual ~MtmMatTriag() = default;
 
     };
-
-
 
 
 }

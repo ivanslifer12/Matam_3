@@ -21,7 +21,7 @@ namespace MtmMath {
     template<typename T>
     class MtmVec {
         Dimensions dime;
-        std::vector<T> value;
+        std::vector<T> inner_stdvector;
         //needed? bool is_upper;
     protected:
         bool transposed = false;
@@ -31,7 +31,7 @@ namespace MtmMath {
         class iterator;
 
         /*
-         * Vector constructor, m is the number of elements in it and val is the initial value for the matrix elements
+         * Vector constructor, m is the number of elements in it and val is the initial inner_stdvector for the matrix elements
         */
         explicit MtmVec(size_t m, const T &val = T());
 
@@ -67,7 +67,7 @@ namespace MtmMath {
         T vecFunc(Func &f) const;
 
         /*
-         * Resizes a vector to dimension dim, new elements gets the value val.
+         * Resizes a vector to dimension dim, new elements gets the inner_stdvector val.
          * Notice vector cannot transpose through this method.
          */
         void resize(Dimensions newDim, const T &val = T());
@@ -86,24 +86,27 @@ namespace MtmMath {
         }
 
         iterator end() {
-            return iterator((size_t) this->value.size()-1);
+            return iterator((size_t) this->inner_stdvector.size() - 1);
         }
 
         nonzero_iterator nzbegin() {
             return nonzero_iterator(*this);
         }
 
-        int distance(iterator first, iterator last);
+        /*
+         * Get the size of this vector.
+         */
+        size_t GetTotalLength();
 
         nonzero_iterator nzend() {
             size_t len = 0;
-            size_t totalsize = (size_t) this->value.size();
+            size_t totalsize = (size_t) this->inner_stdvector.size();
             for (size_t j = 0; j < totalsize; ++j) {
-                if (this->value[j] != 0)
+                if (this->inner_stdvector[j] != 0)
                     len++;
             }
 
-            return nonzero_iterator(len-1);
+            return nonzero_iterator(len - 1);
         }
 
         ~MtmVec() = default;
@@ -126,6 +129,7 @@ namespace MtmMath {
             virtual iterator &operator++() {
                 if (!this->is_valid)
                     return *this;
+
                 if (isFirst)
                     isFirst = false;
                 else
@@ -142,7 +146,7 @@ namespace MtmMath {
 
             // unary operator gives access to the index
             virtual T &operator*() {
-                return this->vec->value[this->index];
+                return this->vec->inner_stdvector[this->index];
             }
 
             bool operator==(const iterator &rhs) const;
@@ -161,9 +165,10 @@ namespace MtmMath {
             explicit nonzero_iterator(size_t i);
 
             ~nonzero_iterator() = default;
+
             // unary operator gives access to the index
             T &operator*() {
-                return this->vec->value[this->real_index];
+                return this->vec->inner_stdvector[this->real_index];
             }
 
             nonzero_iterator &operator++() {
@@ -212,46 +217,49 @@ namespace MtmMath {
     MtmVec<T> operator-(const T &scalar, const MtmVec<T> &vec);
 
     template<typename T>
-    MtmVec<T> operator*(const MtmVec<T> &vec, T &scalar);
+    MtmVec<T> operator*(const MtmVec<T> &vec, const T &scalar);
+
+    template<typename T>
+    MtmVec<T> operator*(const T &scalar, const MtmVec<T> &vec);
 
     //template<typename T>
-    //MtmVec<T> operator*(const T &scalar, const MtmVec<T> &vec);
+    //MtmVec<T> operator*(const T &scalar, const MtmVec<T> &inner_matrix);
 
 
     template<typename T>
-    MtmVec<T>::MtmVec(size_t m, const T &val) : dime(m, 1) {
+    MtmVec<T>::MtmVec(size_t m, const T &val) : dime(m, (size_t) 1) {
         if (m <= 0)
             throw MtmExceptions::IllegalInitialization();
         auto vec = std::vector<T>(m);
         for (size_t i = 0; i < (size_t) vec.size(); i++)
             vec[i] = val;
-        this->value = vec;
+        this->inner_stdvector = vec;
     }
 
     template<typename T>
-    MtmVec<T>::MtmVec() : dime(0, 1), value() {}
+    MtmVec<T>::MtmVec() : dime(0, 1), inner_stdvector() {}
 
 /*MtmVec::MtmVec(const MtmVec<T>& vector) {
-    dime = vector.dime;
-    value = vector.value;
+    dim = vector.dim;
+    inner_stdvector = vector.inner_stdvector;
 }*/
 
     template<typename T>
     T &MtmVec<T>::operator[](int index) {
-        if (index < 0 || (size_t) index >= (size_t) this->value.size()) {
+        if (index < 0 || (size_t) index >= (size_t) this->inner_stdvector.size()) {
             throw MtmExceptions::AccessIllegalElement();
         }
 
-        return this->value[index];
+        return this->inner_stdvector[index];
     }
 
     template<typename T>
     const T &MtmVec<T>::operator[](int index) const {
-        if (index < 0 || (size_t) index >= this->value.size()) {
+        if (index < 0 || (size_t) index >= this->inner_stdvector.size()) {
             throw MtmExceptions::AccessIllegalElement();
         }
 
-        return this->value[index];
+        return this->inner_stdvector[index];
     }
 
     template<class T>
@@ -391,7 +399,7 @@ namespace MtmMath {
 
     template<typename T>
     size_t MtmVec<T>::getLength() const {
-        return this->value.size();
+        return this->inner_stdvector.size();
     }
 
     template<typename T>
@@ -412,7 +420,7 @@ namespace MtmMath {
         if (MAX(old.getRow(), old.getCol()) == MAX(_new.getRow(), _new.getCol()))
             return;
 
-        this->value.resize(MAX(_new.getRow(), _new.getCol()), val);
+        this->inner_stdvector.resize(MAX(_new.getRow(), _new.getCol()), val);
     }
 
     template<typename T>
@@ -428,12 +436,8 @@ namespace MtmMath {
     }
 
     template<typename T>
-    int MtmVec<T>::distance(MtmVec::iterator first, MtmVec::iterator last) {
-        int size = 0;
-        for (auto i = first.begin(); i < last.end(); i++) {
-            size++;
-        }
-        return size;
+    size_t MtmVec<T>::GetTotalLength() {
+        return this->inner_stdvector->size();
     }
 
 

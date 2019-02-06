@@ -10,15 +10,25 @@ using std::size_t;
 
 namespace MtmMath {
 
-    template <typename T>
-    class MtmMatSq {
+    template<typename T>
+    class MtmMatSq : public MtmMat<T> {
     public:
-        /*
-         * Rectangular Matrix constructor, m is the number of rows and columns in the matrix
-         * and val is the initial value for the matrix elements
-         * Algorithm:we must check with try if col=row -> then activate the normal cToR
-         */
-        MtmMatSq (size_t m, const T& val=T());
+        explicit MtmMatSq(const Dimensions &dim_t, const T &val) : MtmMat<T>(dim_t, val) {}
+
+        explicit MtmMatSq(const size_t size, const T &val) : MtmMat<T>(Dimensions(size, size), val) {}
+
+        MtmMatSq() = default;
+
+        MtmMatSq(const MtmMatSq<T> &copy) = default;
+
+        virtual ~MtmMatSq() = default;
+
+        void lol() {
+            MtmMat<int> g = MtmMat<int>(Dimensions(2, 2), 0);
+            MtmMat<int> g2 = g;
+        }
+
+
     };
 
 }
