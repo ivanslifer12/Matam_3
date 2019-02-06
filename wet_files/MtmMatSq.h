@@ -24,12 +24,6 @@ namespace MtmMath {
 
         virtual ~MtmMatSq() = default;
 
-        void lol() {
-            MtmMat<int> g = MtmMat<int>(Dimensions(2, 2), 0);
-            MtmMat<int> g2 = g;
-        }
-
-
     };
 
 }

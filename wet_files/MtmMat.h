@@ -49,31 +49,42 @@ namespace MtmMath {
         virtual MtmMat<T> &operator=(const MtmMat<T> &vector) = default;
 
         class MtmMatAccessor {
-            const size_t row;
-            const MtmMat<T> *mat;
+            size_t row;
+            MtmMat<T> *mat;
         public:
-            explicit MtmMatAccessor(const MtmMat<T> *mat, const size_t row) : row(row), mat(mat) {}
+            explicit MtmMatAccessor(MtmMat<T> *mat, size_t row) : row(row), mat(mat) {}
 
             ~MtmMatAccessor() = default;
 
-            T &operator[](const size_t column) {
-                return mat->at(row, column);
+            T &operator[](size_t column)  {
+                return mat->at(this->row, column);
+            }
+
+            const T &operator[](size_t column) const {
+                return mat->at(this->row, column);
             }
         };
 
-        MtmMatAccessor operator[](const size_t row) {
+        MtmMatAccessor operator[](size_t row) {
             return MtmMatAccessor(this, row);
         }
 
-        MtmMatAccessor operator[](const size_t row) const {
+        const MtmMatAccessor operator[](size_t row) const {
             return MtmMatAccessor(this, row);
         }
 
 
-        T &at(const size_t row, const size_t column) {
+
+        T &at(size_t row, size_t column)  {
             if (row >= this->matrix.size() || column >= this->matrix[row].size())
                 throw MtmExceptions::AccessIllegalElement();
-            return this->matrix.at(row).at(column);
+            return this->matrix[row][column];
+        }
+
+        const T &at( size_t row, size_t column) const {
+            if (row >= this->matrix.size() || column >= this->matrix[row].size())
+                throw MtmExceptions::AccessIllegalElement();
+            return this->matrix[row][column];
         }
 
         /*
@@ -82,7 +93,7 @@ namespace MtmMath {
          * by the function object's * operator
          */
         template<typename Func>
-        MtmVec<T> matFunc(Func &f) const {
+        MtmVec<T> matFunc(Func &f) {
             MtmVec<T> out = MtmVec<T>(this->dim.getRow());
             for (size_t i = 0; i < this->dim.getRow(); ++i) {
                 for (size_t j = 0; j < this->dim.getCol(); ++j) {

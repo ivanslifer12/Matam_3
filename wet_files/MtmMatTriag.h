@@ -14,7 +14,7 @@ namespace MtmMath {
 
     template<typename T>
     class MtmMatTriag : public MtmMatSq<T> {
-        bool isUpper;
+        bool isUpper = false;
     public:
 
         MtmMatTriag(const Dimensions &dim_t, const T &val, bool isUpper) : MtmMatSq<T>(dim_t, val), isUpper(isUpper) {}
@@ -34,7 +34,6 @@ namespace MtmMath {
         explicit MtmMatTriag(const MtmMat<T> &vector) : MtmMatSq<T>(vector), isUpper(false) {}
 
         virtual ~MtmMatTriag() = default;
-
     };
 
 
