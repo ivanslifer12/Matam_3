@@ -17,9 +17,10 @@ namespace MtmMath {
 
         explicit MtmMatSq(const size_t size, const T &val) : MtmMat<T>(Dimensions(size, size), val) {}
 
-        MtmMatSq() = default;
+        MtmMatSq() : MtmMat<T>() {}
 
         MtmMatSq(const MtmMatSq<T> &copy) = default;
+        MtmMatSq(const MtmMat<T> &copy) : MtmMat<T>(copy){}
 
         virtual ~MtmMatSq() = default;
 

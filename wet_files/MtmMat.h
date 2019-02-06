@@ -17,10 +17,11 @@ namespace MtmMath {
     class MtmMat {
 
     protected:
-        std::vector<std::vector<T>> matrix;
         Dimensions dim;
 
     public:
+        std::vector<std::vector<T>> matrix;
+
         class iterator;
 
         class nonzero_iterator;
@@ -48,35 +49,31 @@ namespace MtmMath {
         virtual MtmMat<T> &operator=(const MtmMat<T> &vector) = default;
 
         class MtmMatAccessor {
-            size_t row;
-            const MtmMat<T>& mat;
+            const size_t row;
+            const MtmMat<T> *mat;
         public:
-            explicit MtmMatAccessor(const MtmMat<T>& mat, size_t row) : row(row), mat(&mat)  {}
+            explicit MtmMatAccessor(const MtmMat<T> *mat, const size_t row) : row(row), mat(mat) {}
 
             ~MtmMatAccessor() = default;
 
-            T& operator[](size_t column) {
-                return mat.at(row, column);
+            T &operator[](const size_t column) {
+                return mat->at(row, column);
             }
-
-            T& operator[](size_t column) const {
-                return mat.at(row, column);
-            }
-
         };
 
-        MtmMatAccessor operator[](size_t row) {
-            return MtmMatAccessor(*this, row);
+        MtmMatAccessor operator[](const size_t row) {
+            return MtmMatAccessor(this, row);
         }
-        MtmMatAccessor operator[](size_t row) const {
-            return MtmMatAccessor(*this, row);
+
+        MtmMatAccessor operator[](const size_t row) const {
+            return MtmMatAccessor(this, row);
         }
 
 
-        T at(size_t row, size_t column) {
-            if (row >= matrix.size() || column >= matrix[row].size())
+        T &at(const size_t row, const size_t column) {
+            if (row >= this->matrix.size() || column >= this->matrix[row].size())
                 throw MtmExceptions::AccessIllegalElement();
-            return matrix.at(row).at(column);
+            return this->matrix.at(row).at(column);
         }
 
         /*
@@ -87,8 +84,8 @@ namespace MtmMath {
         template<typename Func>
         MtmVec<T> matFunc(Func &f) const {
             MtmVec<T> out = MtmVec<T>(this->dim.getRow());
-            for (int i = 0; i < this->dim.getRow(); ++i) {
-                for (int j = 0; j < this->dim.getCol(); ++j) {
+            for (size_t i = 0; i < this->dim.getRow(); ++i) {
+                for (size_t j = 0; j < this->dim.getCol(); ++j) {
                     f(this->at(i, j));
                 }
                 out[i] = *f;
@@ -221,7 +218,7 @@ namespace MtmMath {
             virtual T &operator*() {
                 auto row = index / inner_matrix->dim.getCol();
                 auto column = index % inner_matrix->dim.getCol();
-                return this->inner_matrix[row][column];
+                return this->inner_matrix->matrix.at(row).at(column);
             }
 
             bool operator==(const iterator &rhs) const;
@@ -245,7 +242,7 @@ namespace MtmMath {
             T &operator*() {
                 auto row = real_index / this->inner_matrix->dim.getCol();
                 auto column = real_index % this->inner_matrix->dim.getCol();
-                return this->inner_matrix[row][column];
+                return this->inner_matrix->matrix.at(row).at(column);
             }
 
             nonzero_iterator &operator++() {
@@ -265,7 +262,8 @@ namespace MtmMath {
                     return *this;
                 }
 
-                if (*(*this) == T()) { //one * for getting this object, an other * for getting current value from overload.
+                if (*(*this) ==
+                    T()) { //one * for getting this object, an other * for getting current value from overload.
                     this->index--;
                     goto _next;
                 }
@@ -324,6 +322,39 @@ namespace MtmMath {
     }
 
     template<typename T>
+    MtmMat<T> MtmMat<T>::operator+(const T &right) {
+        auto ret = MtmMat<T>(*this);
+        for (auto row = ret.matrix.begin(); row != ret.matrix.end(); ++row) {
+            for (auto column = (*row).begin(); column != (*row).end(); ++column) {
+                *column = (*column) + right;
+            }
+        }
+        return ret;
+    }
+
+    template<typename T>
+    MtmMat<T> MtmMat<T>::operator-(const T &right) {
+        auto ret = MtmMat<T>(*this);
+        for (auto row = ret.matrix.begin(); row != ret.matrix.end(); ++row) {
+            for (auto column = (*row).begin(); column != (*row).end(); ++column) {
+                *column = (*column) - right;
+            }
+        }
+        return ret;
+    }
+
+    template<typename T>
+    MtmMat<T> MtmMat<T>::operator*(const T &right) {
+        auto ret = MtmMat<T>(*this);
+        for (auto row = ret.matrix.begin(); row != ret.matrix.end(); ++row) {
+            for (auto column = (*row).begin(); column != (*row).end(); ++column) {
+                *column = (*column) * right;
+            }
+        }
+        return ret;
+    }
+
+    template<typename T>
     MtmMat<T> operator*(const T &scalar, const MtmMat<T> &vec) {
         return vec * scalar;
     }
@@ -336,6 +367,39 @@ namespace MtmMath {
     template<typename T>
     MtmMat<T> operator-(const T &scalar, const MtmMat<T> &vec) {
         return vec - scalar;
+    }
+
+    template<typename T>
+    MtmMat<T> operator*(const MtmMat<T> &vec, const T &scalar) {
+        auto ret = MtmMat<T>(vec);
+        for (auto row = ret.matrix.begin(); row != ret.matrix.end(); ++row) {
+            for (auto column = (*row).begin(); column != (*row).end(); ++column) {
+                *column *= scalar;
+            }
+        }
+        return ret;
+    }
+
+    template<typename T>
+    MtmMat<T> operator+(const MtmMat<T> &vec, const T &scalar) {
+        auto ret = MtmMat<T>(vec);
+        for (auto row = ret.matrix.begin(); row != ret.matrix.end(); ++row) {
+            for (auto column = (*row).begin(); column != (*row).end(); ++column) {
+                *column +=  scalar;
+            }
+        }
+        return ret;
+    }
+
+    template<typename T>
+    MtmMat<T> operator-(const MtmMat<T> &vec, const T &scalar) {
+        auto ret = MtmMat<T>(vec);
+        for (auto row = ret.matrix.begin(); row != ret.matrix.end(); ++row) {
+            for (auto column = (*row).begin(); column != (*row).end(); ++column) {
+                *column -= scalar;
+            }
+        }
+        return ret;
     }
 
 //iterator
