@@ -48,34 +48,35 @@ namespace MtmMath {
         virtual MtmMat<T> &operator=(const MtmMat<T> &vector) = default;
 
         class MtmMatAccessor {
-            int row;
-            const MtmMat<T> *mat;
+            size_t row;
+            const MtmMat<T>& mat;
         public:
-            explicit MtmMatAccessor(const MtmMat<T> *mat, size_t row) : row(row), mat(&mat)  {}
-
-            MtmMatAccessor(MtmMatAccessor &copy) = default;
+            explicit MtmMatAccessor(const MtmMat<T>& mat, size_t row) : row(row), mat(&mat)  {}
 
             ~MtmMatAccessor() = default;
 
-            T &operator[](const size_t column) {
-                return mat->matrix[row][column];
+            T& operator[](size_t column) {
+                return mat.at(row, column);
             }
 
-            const T &operator[](const size_t column) const {
-                return mat->matrix[row][column];
+            T& operator[](size_t column) const {
+                return mat.at(row, column);
             }
+
         };
 
-        MtmMatAccessor& operator[](const size_t row) const {
-            auto x = MtmMatAccessor(this, row);
-            return x;
+        MtmMatAccessor operator[](size_t row) {
+            return MtmMatAccessor(*this, row);
+        }
+        MtmMatAccessor operator[](size_t row) const {
+            return MtmMatAccessor(*this, row);
         }
 
 
         T at(size_t row, size_t column) {
             if (row >= matrix.size() || column >= matrix[row].size())
                 throw MtmExceptions::AccessIllegalElement();
-            return matrix[row][column];
+            return matrix.at(row).at(column);
         }
 
         /*
@@ -93,15 +94,6 @@ namespace MtmMath {
                 out[i] = *f;
             }
             return out;
-        }
-
-        virtual void print() {
-            for (int i = 0; i < this->dim.getRow(); ++i) {
-                for (int j = 0; j < this->dim.getCol(); ++j) {
-                    cout << this->at(i, j) << " ";
-                }
-                cout << "\n";
-            }
         }
 
         /*
@@ -181,13 +173,15 @@ namespace MtmMath {
 
         nonzero_iterator nzend() {
             size_t len = 0;
-            size_t totalsize = (size_t) this->value.size();
-            for (size_t j = 0; j < totalsize; ++j) { //todo second for, for matrix
-                if (this->value[j] != 0)
-                    len++;
+            auto totalsize = (size_t) this->matrix.size();
+            for (auto row = this->matrix.begin(); row != this->matrix.end(); ++row) {
+                for (auto column = (*row).begin(); column != (*row).end(); ++column) {
+                    if (*column != 0)
+                        len++;
+                }
             }
 
-            return nonzero_iterator();
+            return nonzero_iterator(len);
         }
 
         class iterator {
@@ -271,7 +265,7 @@ namespace MtmMath {
                     return *this;
                 }
 
-                if ((*(this->inner_matrix))[this->real_index] == T()) {
+                if (*(*this) == T()) { //one * for getting this object, an other * for getting current value from overload.
                     this->index--;
                     goto _next;
                 }
