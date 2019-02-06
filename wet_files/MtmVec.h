@@ -374,7 +374,7 @@ namespace MtmMath {
     template<typename T>
     MtmVec<T> MtmVec<T>::operator+(const MtmVec<T> &right) {
         if (this->getDimension() != right.getDimension() || this->transposed != right.transposed)
-            throw MtmExceptions::DimensionMismatch();
+            throw MtmExceptions::DimensionMismatch(this->dime, right.getDimension());
 
         MtmVec<T> result = MtmVec<T>(*this);
         for (size_t i = 0; i < this->getLength(); i++)
@@ -421,7 +421,7 @@ namespace MtmMath {
     template<typename T>
     void MtmVec<T>::resize(Dimensions newDim, const T &val) {
         if ((transposed ? newDim.getRow() : newDim.getCol()) != 1)
-            throw MtmMath::MtmExceptions::ChangeMatFail();
+            throw MtmMath::MtmExceptions::ChangeMatFail(this->dime, newDim);
 
         auto old = this->dime;
         auto _new = this->dime = Dimensions(newDim);
