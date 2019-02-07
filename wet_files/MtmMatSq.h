@@ -13,7 +13,7 @@ namespace MtmMath {
     template<typename T>
     class MtmMatSq : public MtmMat<T> {
     public:
-        explicit MtmMatSq(const Dimensions &dim_t, const T &val) : MtmMat<T>(dim_t, val) {
+        MtmMatSq(const Dimensions &dim_t, const T &val) : MtmMat<T>(dim_t, val) {
 
             if (dim_t.getRow() != dim_t.getCol()) {
                 throw MtmExceptions::IllegalInitialization();
@@ -27,13 +27,13 @@ namespace MtmMath {
 
         MtmMatSq() : MtmMat<T>() {}
 
-        explicit MtmMatSq(const MtmMatSq<T> &copy) : MtmMat<T>(copy){
+        MtmMatSq(const MtmMatSq<T> &copy) : MtmMat<T>(copy){
 
 
         }
 
         //Normal copy CToR
-        MtmMatSq(const MtmMat<T> &copy) : MtmMat<T>(copy) {
+        explicit  MtmMatSq(const MtmMat<T> &copy) : MtmMat<T>(copy) {
             if (this->dim.getRow() != this->dim.getCol()) {
                 throw MtmExceptions::DimensionMismatch(this->dim.getRow(), this->dim.getCol());
             }
@@ -57,7 +57,7 @@ namespace MtmMath {
 
 
     };
-};
+}
 
 
 #endif //EX3_MTMMATREC_H

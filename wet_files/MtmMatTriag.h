@@ -29,20 +29,20 @@ namespace MtmMath {
 
             }
             for (size_t row = 0; row < this->dim.getRow(); ++row) {
-                for (size_t col = row+1; col<this->dim.getCol(); ++col) {
+                for (size_t col = row + 1; col < this->dim.getCol(); ++col) {
                     if (this->matrix[row][col] != 0) {
                         downTest = 1;
                         break;
                     }
                 }
             }
-            if(upTest||downTest){
+            if (upTest || downTest) {
                 throw MtmExceptions::IllegalInitialization();
             }
         }
 
 
-        MtmMatTriag(size_t m, const T &val = T(), bool isUpper_t = true) : MtmMatSq<T>(m, val) {
+        explicit MtmMatTriag(size_t m, const T &val = T(), bool isUpper_t = true) : MtmMatSq<T>(m, val) {
             for (size_t row = 0; row < this->dim.getRow(); ++row) {
                 if (this->isUpper) {
                     for (size_t col = 0; col < row; ++col) {
@@ -58,18 +58,13 @@ namespace MtmMath {
 
         }
 
-        explicit MtmMatTriag(MtmMatTriag<T>
-                             &matrix) = default;
+        MtmMatTriag(MtmMatTriag<T>&matrix) = default;
 
-        explicit MtmMatTriag(MtmMatSq<T>
-                             &matrix) :
-                MtmMatSq<T>(matrix) {
+        explicit MtmMatTriag(MtmMatSq<T>&matrix) :MtmMatSq<T>(matrix) {
             this->isItTriag();
         }
 
-        explicit MtmMatTriag(MtmMat<T>
-                             &matrix) :
-                MtmMatSq<T>(matrix) {
+        explicit MtmMatTriag(MtmMat<T>&matrix) :MtmMatSq<T>(matrix) {
             this->isItTriag();
         }
 
@@ -78,7 +73,7 @@ namespace MtmMath {
         MtmMatTriag() = default;
 
         void transpose() {
-            MtmMatTriag<T> tempMatrix = MtmMatTriag(this);
+            MtmMatTriag<T> tempMatrix = MtmMatTriag((*this));
             for (size_t row = 0; row < this->dim.getRow(); ++row) {
                 for (size_t col = 0; col < this->dim.getCol(); ++col) {
 
@@ -91,7 +86,8 @@ namespace MtmMath {
 
         void resize(Dimensions dim, const T &val = T()) {
             Dimensions oldDim(this->dim);
-            this->MtmMatSq<T>::resize(dim, val);
+            //this->MtmMatSq<T>::resize(dim, val);
+            (*this).MtmMatSq<T>::resize(dim, val);
             if (dim.getRow() > oldDim.getRow()) {
 
                 if (this->isUpper) {
