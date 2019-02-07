@@ -22,7 +22,6 @@ namespace MtmMath {
     class MtmVec {
         Dimensions dime;
         std::vector<T> inner_stdvector;
-        //needed? bool is_upper;
     protected:
         bool transposed = false;
     public:

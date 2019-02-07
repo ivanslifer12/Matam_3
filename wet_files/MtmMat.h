@@ -161,7 +161,18 @@ namespace MtmMath {
          * resizes matrix so linear elements inner_stdvector are the same without changing num of elements.
          */
         virtual void resize(Dimensions newDim, const T &val = T()) {
-            reshape(newDim, val);
+            if(dim.getCol()==0 || dim.getRow()==0) {
+                throw MtmExceptions::ChangeMatFail(this->dim,newDim);
+            }
+            this->dim=dim;
+            Dimensions vectorWraperOut(dim.getRow(),1);
+            Dimensions vectorWraperIn(1,dim.getCol());
+            MtmVec<T> newRowVec(dim.getCol(),val);
+            newRowVec.transpose();
+            this->matrix.resize(vectorWraperOut,vectorWraperIn);
+            for(size_t row=0;row<dim.getRow();++row){
+                this->operator[](row).resize(vectorWraperIn,val);
+            }
         }
 
         /*

@@ -11,12 +11,12 @@ set(SOURCE_FILES
         wet_files/MtmMat.h
         wet_files/MtmMatSq.h
         wet_files/MtmMatTriag.h
-        wet_files/main.cpp
+        #wet_files/main.cpp
         wet_files/Complex.cpp)
 #
 # wet_files/test.cpp
 #
 # wet_files/main.cpp
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pedantic-errors -Wall -Werror -DNDEBUG") #
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11") #-pedantic-errors -Wall -Werror -DNDEBUG
 
 add_executable(matam_3 ${SOURCE_FILES})
