@@ -17,6 +17,6 @@ set(SOURCE_FILES
 # wet_files/test.cpp
 #
 # wet_files/main.cpp
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -DNDEBUG") #  -pedantic-errors -Wall -Werror
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pedantic-errors -Wall -Werror -DNDEBUG") #
 
 add_executable(matam_3 ${SOURCE_FILES})
